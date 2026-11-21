@@ -3,5 +3,5 @@
 window.CALCULAR_SUPABASE = {
   url: "https://fqdpjotkinjuhhspvcdw.supabase.co",
   key: "sb_publishable_89QhXaRQ6dfrtLDNfq0mcQ_bJuaqBtq",
-  databaseReady: false
+  databaseReady: true
 };
