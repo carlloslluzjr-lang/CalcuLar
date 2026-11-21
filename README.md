@@ -4,32 +4,32 @@ Plataforma web responsiva para simulações imobiliárias multiempresa. O navega
 
 ## Estado desta entrega
 
-- Landing page pública planejada como entrada do CalcuLar (`index.html`) e aplicativo separado (`app.html`), com CTAs dos três planos ligados ao cadastro correspondente.
+- Landing page pública (`index.html`) e aplicativo separado (`app.html`), com CTAs dos três planos ligados ao cadastro correspondente.
 - Interface do aplicativo com identidade CalcuLar, CRM com formulário público de leads, histórico de simulações por cliente, indicadores por corretor, avisos internos e estimativas de ITBI/cartório configuráveis por empresa.
 - Simulação de Casa, Imóvel, Terreno, Loteamento e Imóvel comercial.
 - SAC, Price, SACOQ Anual 2 crescente mensalmente, SAC/Price corrigidos e método personalizado baseado em SAC.
 - Importação de CSV e Excel com prévia, validação e gravação dos perfis por empresa.
-- Migrações Supabase com organizações, membros, convites, perfis pessoais editáveis, taxas, empreendimentos, clientes, simulações e propostas, com RLS e gestão de equipe por papel. As migrações 001 e 002 foram aplicadas no projeto Supabase hospedado; a migração 003 adiciona formulário público de leads e custos locais configuráveis.
-- Autenticação planejada por e-mail/senha e telefone/SMS via Supabase Auth.
+- Migrações Supabase com organizações, membros, convites, perfis pessoais editáveis, taxas, empreendimentos, clientes, simulações, propostas, leads e filiais, com RLS e gestão de equipe por papel. As quatro migrações deste projeto foram aplicadas no Supabase hospedado informado pelo proprietário; a estrutura foi conferida no SQL Editor.
+- Autenticação Supabase por e-mail e telefone; SMS exige provedor. Login por provedores externos depende de ativar cada provedor nas configurações do Supabase.
 - O pacote tem um Supabase local em Docker, com a migração CalcuLar aplicada e contas de demonstração locais. Nenhuma chave administrativa está no navegador.
 
 ## Rodar localmente
 
 1. Com Docker Desktop aberto, execute `npm run local:start`. Na primeira vez, ele baixa e inicia o Supabase local e aplica as migrações em `supabase/migrations/`, depois abre o servidor web. Para aplicar uma migração nova a uma instância já iniciada, use `npx supabase migration up --local`.
-3. Abra `http://127.0.0.1:8787/` e depois escolha um plano ou clique em **Acessar minha conta**.
-4. Para parar o servidor web, use `Ctrl+C` no Terminal. Para parar o banco, execute `npm run db:stop`. Os dados locais ficam nos volumes Docker e persistem entre reinícios.
-5. Use as credenciais do arquivo `LOCAL-ACCESS.txt` para entrar como proprietário ou corretor.
+2. Abra `http://127.0.0.1:8787/` e depois escolha um plano ou clique em **Acessar minha conta**.
+3. Para parar o servidor web, use `Ctrl+C` no Terminal. Para parar o banco, execute `npm run db:stop`. Os dados locais ficam nos volumes Docker e persistem entre reinícios.
+4. Use as credenciais do arquivo `LOCAL-ACCESS.txt` para entrar como proprietário ou corretor.
 
 A instância local é independente do projeto Supabase hospedado. `supabase-config.js` aponta para localhost; não publique esse arquivo no Site remoto. A referência do projeto hospedado fica em `supabase-config.hosted.example.js`.
 
 ## Configurar o Supabase
 
-1. O esquema base e os métodos SACOQ já estão aplicados no projeto hospedado. Para os recursos internos novos, aplique em ordem as migrações `202611210001_internal_features.sql` e `202611210002_branches_reporting.sql` após as migrações 001 e 002.
-2. Em Authentication, habilite e-mail e telefone. Para SMS, configure um provedor; revise URLs de retorno e confirmação para o domínio do Site.
+1. O projeto hospedado já recebeu as migrações base `202611200001_calcular_core.sql` e `202611200002_profile_team_sacoq.sql`, além de `202611210001_internal_features.sql` e `202611210002_branches_reporting.sql`. Em um projeto novo, aplique nessa ordem.
+2. Em Authentication, habilite e-mail e os provedores externos que desejar. Login por telefone com código SMS exige provedor e pode gerar cobrança; revise URLs de retorno e confirmação para o domínio final.
 3. Copie `supabase-config.hosted.example.js` para `supabase-config.js` apenas depois da migração remota. Use só a chave publicável no navegador; nunca use `service_role`/secret key.
 4. O aplicativo precisa usar `supabase-config.js` com a URL e a chave publicável do mesmo projeto. O pacote `dist/` aponta para o projeto hospedado; a configuração local da raiz continua independente.
 
-O formulário de conexão manual do aplicativo é só para prévia local por navegador. A configuração padrão desta pasta usa o banco Supabase em Docker. O diretório `dist/` aponta para o projeto Supabase hospedado.
+O formulário de conexão manual do aplicativo é só para prévia local por navegador. A configuração padrão desta pasta usa o banco Supabase em Docker. O diretório `dist/` aponta para o projeto Supabase hospedado. A aplicação das duas migrações novas foi confirmada no Supabase local e remoto.
 
 ## Importação de taxas
 
