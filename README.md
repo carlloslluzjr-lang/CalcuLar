@@ -1,44 +1,52 @@
 # CalcuLar
 
-Plataforma web responsiva para simulações imobiliárias multiempresa. O navegador acessa o Supabase usando uma chave publicável; autenticação, dados e isolamento entre empresas ficam no Supabase Auth + Postgres/RLS.
+Plataforma web responsiva para simulações imobiliárias multiempresa. O navegador acessa o Supabase diretamente usando a chave publicável; autenticação, dados e isolamento entre empresas ficam no Supabase Auth + Postgres/RLS.
 
 ## Estado desta entrega
 
-- Landing page em index.html e aplicativo em app.html, com os três planos ligados ao cadastro.
-- Interface para operação, simulações, clientes, propostas, taxas, empreendimentos, equipe, configurações e planos.
+- Landing page pública planejada como entrada do CalcuLar (`index.html`) e aplicativo separado (`app.html`), com CTAs dos três planos ligados ao cadastro correspondente.
+- Interface do aplicativo com identidade CalcuLar, CRM com formulário público de leads, histórico de simulações por cliente, indicadores por corretor, avisos internos e estimativas de ITBI/cartório configuráveis por empresa.
 - Simulação de Casa, Imóvel, Terreno, Loteamento e Imóvel comercial.
-- SAC, Price, SACOQ Anual 2 crescente mensalmente, SACOQ anual com acumulado em 12 meses, SAC/Price corrigidos e método personalizado baseado em SAC.
+- SAC, Price, SACOQ Anual 2 crescente mensalmente, SAC/Price corrigidos e método personalizado baseado em SAC.
 - Importação de CSV e Excel com prévia, validação e gravação dos perfis por empresa.
-- Migrações Supabase para empresas, membros, convites, perfis pessoais, taxas, empreendimentos, clientes, simulações e propostas, com RLS e gestão de equipe por papel.
-- Autenticação por e-mail/senha e telefone/SMS via Supabase Auth.
+- Migrações Supabase com organizações, membros, convites, perfis pessoais editáveis, taxas, empreendimentos, clientes, simulações e propostas, com RLS e gestão de equipe por papel. As migrações 001 e 002 foram aplicadas no projeto Supabase hospedado; a migração 003 adiciona formulário público de leads e custos locais configuráveis.
+- Autenticação planejada por e-mail/senha e telefone/SMS via Supabase Auth.
+- O pacote tem um Supabase local em Docker, com a migração CalcuLar aplicada e contas de demonstração locais. Nenhuma chave administrativa está no navegador.
 
 ## Rodar localmente
 
-1. Com Docker Desktop aberto, execute npm run local:start. O comando inicia o Supabase local e o servidor web.
-2. Abra http://127.0.0.1:8787/ e escolha um plano ou clique em Acessar minha conta.
-3. Para parar o servidor web, use Ctrl+C. Para parar o banco, execute npm run db:stop.
-4. As credenciais de demonstração ficam no arquivo local ignorado LOCAL-ACCESS.txt.
+1. Com Docker Desktop aberto, execute `npm run local:start`. Na primeira vez, ele baixa e inicia o Supabase local e aplica as migrações em `supabase/migrations/`, depois abre o servidor web. Para aplicar uma migração nova a uma instância já iniciada, use `npx supabase migration up --local`.
+3. Abra `http://127.0.0.1:8787/` e depois escolha um plano ou clique em **Acessar minha conta**.
+4. Para parar o servidor web, use `Ctrl+C` no Terminal. Para parar o banco, execute `npm run db:stop`. Os dados locais ficam nos volumes Docker e persistem entre reinícios.
+5. Use as credenciais do arquivo `LOCAL-ACCESS.txt` para entrar como proprietário ou corretor.
 
-A instância local é independente do projeto Supabase hospedado. A configuração local aponta para localhost; não publique credenciais locais.
+A instância local é independente do projeto Supabase hospedado. `supabase-config.js` aponta para localhost; não publique esse arquivo no Site remoto. A referência do projeto hospedado fica em `supabase-config.hosted.example.js`.
 
-## Configurar o Supabase hospedado
+## Configurar o Supabase
 
-1. No SQL Editor do projeto hospedado, aplique em ordem as migrações supabase/migrations/202611200001_calcular_core.sql e supabase/migrations/202611200002_profile_team_sacoq.sql.
-2. Habilite e-mail e telefone em Authentication. Para SMS, configure um provedor e revise as URLs de retorno.
-3. Configure supabase-config.js com a URL do projeto e somente a chave publicável. Nunca use uma chave secret ou service_role no navegador.
+1. O esquema base e os métodos SACOQ já estão aplicados no projeto hospedado. Para os recursos internos novos, aplique em ordem as migrações `202611210001_internal_features.sql` e `202611210002_branches_reporting.sql` após as migrações 001 e 002.
+2. Em Authentication, habilite e-mail e telefone. Para SMS, configure um provedor; revise URLs de retorno e confirmação para o domínio do Site.
+3. Copie `supabase-config.hosted.example.js` para `supabase-config.js` apenas depois da migração remota. Use só a chave publicável no navegador; nunca use `service_role`/secret key.
+4. O aplicativo precisa usar `supabase-config.js` com a URL e a chave publicável do mesmo projeto. O pacote `dist/` aponta para o projeto hospedado; a configuração local da raiz continua independente.
+
+O formulário de conexão manual do aplicativo é só para prévia local por navegador. A configuração padrão desta pasta usa o banco Supabase em Docker. O diretório `dist/` aponta para o projeto Supabase hospedado.
 
 ## Importação de taxas
 
-Colunas compatíveis: nome, produto, metodo, juros_aa, indice, indice_aa, vigencia.
+Use **Baixar modelo CSV** ou uma planilha Excel com colunas compatíveis:
 
-Produtos: casa, imovel, terreno, loteamento, comercial. Métodos: SAC, PRICE, SACOQ2, SACOQ12, SAC_INDEXED, PRICE_INDEXED, CUSTOM.
+`nome, produto, metodo, juros_aa, indice, indice_aa, vigencia`
 
-## Métodos SACOQ
+Produtos: `casa`, `imovel`, `terreno`, `loteamento`, `comercial`. Métodos: `SAC`, `PRICE`, `SACOQ2`, `SACOQ12`, `SAC_INDEXED`, `PRICE_INDEXED`, `CUSTOM`.
 
-SACOQ Anual 2: parcelas crescem mensalmente pela taxa mensal efetiva informada; o índice escolhido corrige o saldo no 13º mês e nos aniversários seguintes, com recálculo das parcelas restantes. SACOQ12: juros mensais acumulados no saldo, sem cobrança mensal nas prestações; no 13º mês e nos ciclos anuais seguintes, são capitalizados com o índice e o saldo é reamortizado pelo prazo restante. A simulação liquida o saldo acumulado no vencimento. Confira os detalhes do contrato antes de usar em oferta comercial.
+## SACOQ Anual 2
 
-## Limites atuais
+SACOQ Anual 2: parcelas crescem mensalmente pela taxa mensal efetiva informada; o índice escolhido corrige o saldo no início do 13º mês e nos aniversários seguintes, com recálculo das parcelas restantes. `SACOQ12`: os juros mensais ficam acumulados no saldo, sem compor as prestações mensais; no 13º mês e nos ciclos anuais seguintes, são capitalizados junto com o índice escolhido e o saldo é reamortizado pelo prazo restante. No vencimento, a simulação liquida o saldo acumulado. Confira os detalhes de arredondamento e de índice do contrato antes de usar em oferta comercial.
 
-- Cobrança recorrente e ativação automática de planos dependem de configurar um gateway.
-- Integrações de consulta de CPF, Meta Ads, CRMs, ERPs, cartórios, ITBI e instituições financeiras ainda dependem de projeto e contratos.
-- As fórmulas de financiamento precisam de auditoria independente antes do uso comercial.
+## Limites que ainda dependem de configuração/escopo externo
+
+- Ativação de SMTP/SMS para convites automáticos e revisão das URLs de autenticação no domínio final.
+- Termos e política de privacidade finais, revisados pelo responsável da empresa.
+- Cobrança recorrente, limites efetivos dos planos e ativação automática após configurar um gateway.
+- APIs de consulta de CPF, integração Meta Ads, CRMs/ERPs e envio real de propostas a instituições. As estimativas de ITBI e cartório são informadas pela empresa e precisam de atualização conforme cidade, UF e tabela vigente.
+- Auditoria comercial e conferência independente das fórmulas antes de produção.
