@@ -9,7 +9,7 @@ Plataforma web responsiva para simulações imobiliárias multiempresa. O navega
 - Simulação de Casa, Imóvel, Terreno, Loteamento e Imóvel comercial.
 - SAC, Price, SACOQ Anual 2 crescente mensalmente, SAC/Price corrigidos e método personalizado baseado em SAC.
 - Importação de CSV e Excel com prévia, validação e gravação dos perfis por empresa.
-- Migrações Supabase com organizações, membros, convites, perfis pessoais editáveis, taxas, empreendimentos, clientes, simulações, propostas, leads e filiais, com RLS e gestão de equipe por papel. As quatro migrações deste projeto foram aplicadas no Supabase hospedado informado pelo proprietário; a estrutura foi conferida no SQL Editor.
+- Migrações Supabase com organizações, membros, convites, perfis pessoais editáveis, taxas, empreendimentos, clientes, simulações, propostas, leads e filiais, com RLS e gestão de equipe por papel. As cinco migrações deste projeto foram aplicadas no Supabase hospedado informado pelo proprietário; a estrutura foi conferida no SQL Editor.
 - Autenticação Supabase por e-mail e telefone; SMS exige provedor. Login por provedores externos depende de ativar cada provedor nas configurações do Supabase.
 - O pacote tem um Supabase local em Docker, com a migração CalcuLar aplicada e contas de demonstração locais. Nenhuma chave administrativa está no navegador.
 
@@ -24,12 +24,12 @@ A instância local é independente do projeto Supabase hospedado. `supabase-conf
 
 ## Configurar o Supabase
 
-1. O projeto hospedado já recebeu as migrações base `202611200001_calcular_core.sql` e `202611200002_profile_team_sacoq.sql`, além de `202611210001_internal_features.sql` e `202611210002_branches_reporting.sql`. Em um projeto novo, aplique nessa ordem.
+1. O projeto hospedado já recebeu as migrações base `202611200001_calcular_core.sql` e `202611200002_profile_team_sacoq.sql`, além de `202611210001_internal_features.sql`, `202611210002_branches_reporting.sql` e `202611220001_commercial_plans.sql`. Em um projeto novo, aplique nessa ordem.
 2. Em Authentication, habilite e-mail e os provedores externos que desejar. Login por telefone com código SMS exige provedor e pode gerar cobrança; revise URLs de retorno e confirmação para o domínio final.
 3. Copie `supabase-config.hosted.example.js` para `supabase-config.js` apenas depois da migração remota. Use só a chave publicável no navegador; nunca use `service_role`/secret key.
 4. O aplicativo precisa usar `supabase-config.js` com a URL e a chave publicável do mesmo projeto. O pacote `dist/` aponta para o projeto hospedado; a configuração local da raiz continua independente.
 
-O formulário de conexão manual do aplicativo é só para prévia local por navegador. A configuração padrão desta pasta usa o banco Supabase em Docker. O diretório `dist/` aponta para o projeto Supabase hospedado. A aplicação das duas migrações novas foi confirmada no Supabase local e remoto.
+O formulário de conexão manual do aplicativo é só para prévia local por navegador. A configuração padrão desta pasta usa o banco Supabase em Docker. O diretório `dist/` aponta para o projeto Supabase hospedado. Proprietários e administradores podem editar os planos comerciais da empresa na opção **Planos CalcuLar**; o conteúdo fica salvo em `organizations.commercial_plans`. As migrações de leads, filiais e edição de planos foram aplicadas no Supabase local e remoto.
 
 ## Importação de taxas
 
