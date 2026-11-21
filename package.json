@@ -1,0 +1,14 @@
+{
+  "name": "calcular-local",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "db:start": "supabase start --network-id calcular-local-network -x storage-api,imgproxy,realtime,edge-runtime,logflare,vector,supavisor,studio,postgres-meta",
+    "db:stop": "supabase stop",
+    "app:start": "python3 -m http.server 8787 --bind 127.0.0.1",
+    "local:start": "npm run db:start && npm run app:start"
+  },
+  "devDependencies": {
+    "supabase": "^3.2.0"
+  }
+}
