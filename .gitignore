@@ -1,0 +1,7 @@
+node_modules/
+LOCAL-ACCESS.txt
+supabase/.temp/
+.DS_Store
+supabase/.branches/
+supabase-config.js
+!dist/supabase-config.js
