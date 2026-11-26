@@ -5,3 +5,5 @@ supabase/.temp/
 supabase/.branches/
 supabase-config.js
 !dist/supabase-config.js
+._*
+__MACOSX
