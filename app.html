@@ -4,8 +4,19 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101e35">
   <title>CalcuLar — Crédito imobiliário</title>
   <link rel="icon" href="./calcular-mark.svg" type="image/svg+xml">
+  <script src="./xlsx.full.min.js"></script>
   <style>
-    :root{--navy:#101e35;--navy2:#192b48;--blue:#1468d4;--cyan:#26c9df;--green:#15775b;--mint:#e3f6ef;--ink:#18243a;--muted:#6d788a;--line:#e2e8ef;--bg:#f4f7fa;--white:#fff;--bad:#ad3f45;--shadow:0 16px 42px #10233d0b}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:var(--blue)}.hidden{display:none!important}.shell{min-height:100vh}.login-layout{min-height:100vh;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);background:white}.hero{background:radial-gradient(ellipse at 75% 10%,#236b87 0,transparent 32%),linear-gradient(145deg,#0e1e35,#132b4a 70%,#17687c);color:white;padding:clamp(30px,7vw,100px);display:flex;flex-direction:column;justify-content:space-between;min-height:100vh}.logo{display:flex;align-items:center;gap:12px}.logo img{width:42px;height:42px;flex:none}.logo b{font-size:20px;letter-spacing:.01em}.logo-word{display:inline-flex;gap:0;white-space:nowrap}.hero .logo-word .logo-accent{color:#a8cfdf}.sidebar .logo-word .logo-base{color:var(--navy)}.sidebar .logo-word .logo-accent{color:var(--green)}.logo-home{border:0;background:transparent;color:inherit;text-align:left;padding:0;cursor:pointer}.logo-home:hover .logo-word{text-decoration:underline;text-underline-offset:4px}.brand-caption{display:block;color:var(--muted);font-size:10px;font-weight:500}.breadcrumb-home{border:0;padding:0;background:transparent;color:inherit;font:inherit;font-weight:750;cursor:pointer}.breadcrumb-home:hover{color:var(--blue)}.hero-copy{max-width:620px}.hero-copy .pill{border:1px solid #ffffff3b;background:#ffffff10;border-radius:30px;padding:6px 12px;font-size:11px;letter-spacing:.1em;text-transform:uppercase}.hero h1{font-size:clamp(36px,5vw,62px);line-height:1.06;letter-spacing:-.05em;margin:22px 0}.hero h1 em{color:#62d7e5;font-style:normal}.hero p{color:#d0dde8;font-size:17px;max-width:490px}.hero-footer{font-size:12px;color:#aabccb}.auth-wrap{display:flex;align-items:center;justify-content:center;padding:26px}.auth-card{width:min(450px,100%);padding:34px 30px;border:1px solid var(--line);border-radius:18px;background:white;box-shadow:var(--shadow)}.auth-card h2{margin:0;font-size:25px;letter-spacing:-.04em}.auth-card>p{color:var(--muted);margin:6px 0 22px}.auth-tabs{display:flex;gap:5px;background:#f2f5f8;padding:4px;border-radius:9px;margin-bottom:19px}.auth-tabs button{flex:1;border:0;background:none;padding:8px;border-radius:7px;color:#697688;font-size:13px;font-weight:650}.auth-tabs button.active{background:white;color:var(--navy);box-shadow:0 1px 3px #18243a18}.field{margin-bottom:13px}.field label{display:block;font-size:12px;font-weight:700;color:#526071;margin-bottom:5px}.field input,.field select,.field textarea{width:100%;border:1px solid #d8e0e8;border-radius:9px;height:42px;padding:0 11px;background:#fff;color:var(--ink);outline:none}.field textarea{height:auto;padding:10px;min-height:86px;resize:vertical}.field input:focus,.field select:focus,.field textarea:focus{border-color:#6aabdf;box-shadow:0 0 0 3px #3e93ce1c}.hint{font-size:11px;color:#8692a1;margin-top:4px}.check{display:flex;gap:8px;align-items:flex-start;font-size:12px;color:#637083;margin:8px 0 15px}.check input{margin-top:3px;accent-color:var(--blue)}.btn{border:1px solid #d9e1e8;background:#fff;color:#30415a;border-radius:9px;padding:10px 13px;font-weight:700;font-size:13px}.btn:hover{border-color:#94a8ba}.btn.primary{background:var(--blue);border-color:var(--blue);color:white}.btn.primary:hover{background:#0959ba}.btn.cyan{background:var(--cyan);border-color:var(--cyan);color:#092633}.btn.full{width:100%}.btn.danger{color:var(--bad)}.btn.small{padding:7px 10px;font-size:12px}.notice{border:1px solid #f0dca8;background:#fff8e7;border-radius:9px;padding:10px 12px;color:#715a29;font-size:12px;margin-top:14px}.error{color:var(--bad);font-size:12px;margin:8px 0}.ok{color:var(--green);font-size:12px;margin:8px 0}.main-app{min-height:100vh;display:grid;grid-template-columns:248px 1fr}.sidebar{background:var(--navy);color:#edf4fa;display:flex;flex-direction:column;padding:22px 13px;gap:25px}.sidebar .logo{padding:0 10px}.sidebar .logo b{font-size:15px}.sidebar .logo span{display:block;font-size:11px;letter-spacing:.03em}.org-switch{margin:0 4px;border:1px solid #ffffff26;border-radius:10px;padding:10px 12px;color:#dae4ec;background:#ffffff0c}.org-switch small{display:block;color:#9eb1c2;font-size:10px}.org-switch strong{font-size:13px}.navgroup label{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#8ba1b4;padding:0 11px 7px}.nav{display:grid;gap:3px}.nav button{border:0;background:transparent;color:#c7d3df;text-align:left;border-radius:8px;padding:10px 11px;display:flex;align-items:center;gap:10px;font-size:13px}.nav button:hover,.nav button.active{background:#ffffff15;color:#fff}.nav .ico{width:18px;text-align:center}.sidebar-foot{margin-top:auto;border-top:1px solid #ffffff20;padding:14px 10px 0;color:#9eb1c2;font-size:11px}.sidebar-foot button{background:none;border:0;color:#d9e4ec;padding:8px 0;font-size:12px}.right{min-width:0}.topbar{height:64px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(17px,3vw,38px)}.breadcrumb{font-size:12px;color:var(--muted)}.profile{display:flex;align-items:center;gap:9px;font-size:12px;color:#47566a}.avatar{width:32px;height:32px;background:#e5f0fb;color:#1c63a7;display:grid;place-items:center;border-radius:50%;font-weight:800}.content{max-width:1460px;margin:auto;padding:28px clamp(16px,3vw,40px) 50px}.heading{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:19px}.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:10px;font-weight:800;color:var(--blue)}h1{font-size:clamp(24px,3vw,32px);line-height:1.2;letter-spacing:-.04em;margin:4px 0}.heading p{color:var(--muted);margin:6px 0 0;font-size:13px}.card{background:#fff;border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow)}.cardpad{padding:18px}.section-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}.section-head h2{font-size:16px;margin:0;letter-spacing:-.02em}.section-head p{font-size:12px;color:var(--muted);margin:3px 0 0}.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:13px}.col2{grid-column:span 2}.col3{grid-column:span 3}.col4{grid-column:span 4}.col6{grid-column:span 6}.col8{grid-column:span 8}.col12{grid-column:span 12}.field-row{margin:0}.tabbar{display:flex;gap:3px;overflow:auto;border-bottom:1px solid var(--line);margin-bottom:15px}.tabbar button{white-space:nowrap;border:0;background:transparent;padding:10px 13px;color:#718093;font-size:12px;font-weight:700;border-bottom:2px solid transparent}.tabbar button.active{color:var(--blue);border-color:var(--blue)}.switch{display:flex;background:#eff3f6;padding:3px;border-radius:8px;gap:3px}.switch button{border:0;background:none;border-radius:6px;padding:7px 11px;color:#66758a;font-size:12px;font-weight:700}.switch button.active{background:#fff;color:var(--blue);box-shadow:0 1px 3px #0a294018}.result-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin:15px 0}.metric{background:#fff;border:1px solid var(--line);border-radius:10px;padding:13px 14px}.metric span{font-size:10px;text-transform:uppercase;color:#758296;letter-spacing:.08em}.metric strong{display:block;font-size:19px;letter-spacing:-.04em;margin-top:3px}.metric small{color:#8490a0;font-size:10px}.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:10px}.table{width:100%;border-collapse:collapse;min-width:650px}.table th{text-align:left;padding:11px 12px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#758296;background:#f7f9fb;border-bottom:1px solid var(--line)}.table td{padding:11px 12px;border-bottom:1px solid #edf1f5;font-size:12px}.table tr:last-child td{border:0}.tag{display:inline-block;padding:3px 8px;border-radius:20px;background:#e4f5ee;color:#247c5e;font-size:10px;font-weight:750}.tag.blue{background:#e8f1fc;color:#2769ae}.tag.amber{background:#fff4d9;color:#8a6b16}.actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.message{padding:13px;border-radius:9px;background:#f2f7fc;color:#52657a;border:1px solid #dce8f3;font-size:12px}.message.warn{background:#fff9ec;border-color:#f0e1b4;color:#725c30}.message.success{background:#e9f6f0;border-color:#ceeadd;color:#2a7059}.empty{text-align:center;padding:36px 16px;color:var(--muted);font-size:13px}.logo-sample{width:58px;height:58px;object-fit:contain}.modal{position:fixed;inset:0;background:#07162988;display:none;place-items:center;padding:18px;z-index:99}.modal.open{display:grid}.dialog{background:white;border-radius:14px;padding:21px;width:min(520px,100%);max-height:90vh;overflow:auto;box-shadow:0 22px 70px #07162955}.dialog h2{margin:0 0 6px;font-size:20px}.dialog p{color:var(--muted);font-size:12px;margin:0 0 16px}.dialog-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:17px}.toast{position:fixed;right:20px;bottom:20px;max-width:min(400px,calc(100vw - 40px));background:#102d45;color:white;padding:12px 16px;border-radius:10px;font-size:12px;box-shadow:var(--shadow);opacity:0;transform:translateY(10px);transition:.2s;pointer-events:none;z-index:120}.toast.show{opacity:1;transform:none}.disclaimer{font-size:10px;color:#8b96a4;margin-top:12px}.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.plan-top{display:flex;align-items:center;justify-content:space-between;gap:8px}.plan-top h3{margin:0}.plan{padding:18px;border:1px solid var(--line);border-radius:13px;background:white}.plan.featured{border:2px solid var(--blue);box-shadow:0 10px 35px #1468d416}.plan h3{margin:0;font-size:17px}.plan p{color:var(--muted);font-size:12px;min-height:38px}.plan ul{padding-left:18px;color:#57667a;font-size:12px;line-height:1.8}.plan .price{font-size:22px;color:var(--blue);font-weight:800}.mini{font-size:10px;color:#8b96a4}.mobile-menu{display:none}
+    :root{--navy:#101e35;--navy2:#192b48;--blue:#1468d4;--cyan:#26c9df;--green:#15775b;--mint:#e3f6ef;--ink:#18243a;--muted:#6d788a;--line:#e2e8ef;--bg:#f4f7fa;--white:#fff;--bad:#ad3f45;--shadow:0 16px 42px #10233d0b}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:var(--blue)}.hidden{display:none!important}.shell{min-height:100vh}.login-layout{min-height:100vh;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);background:white}.hero{background:radial-gradient(ellipse at 75% 10%,#236b87 0,transparent 32%),linear-gradient(145deg,#0e1e35,#132b4a 70%,#17687c);color:white;padding:clamp(30px,7vw,100px);display:flex;flex-direction:column;justify-content:space-between;min-height:100vh}.logo{display:flex;align-items:center;gap:12px}.logo img{width:42px;height:42px;flex:none}.logo b{font-size:20px;letter-spacing:.01em}.logo-word{display:inline-flex;gap:0;white-space:nowrap}.hero .logo-word .logo-accent{color:#a8cfdf}.sidebar .logo-word .logo-base{color:var(--navy)}.sidebar .logo-word .logo-accent{color:var(--green)}.logo-home{border:0;background:transparent;color:inherit;text-align:left;padding:0;cursor:pointer}.logo-home:hover .logo-word{text-decoration:underline;text-underline-offset:4px}.brand-caption{display:block;color:var(--muted);font-size:10px;font-weight:500}.breadcrumb-home{border:0;padding:0;background:transparent;color:inherit;font:inherit;font-weight:750;cursor:pointer}.breadcrumb-home:hover{color:var(--blue)}.hero-copy{max-width:620px}.hero-copy .pill{border:1px solid #ffffff3b;background:#ffffff10;border-radius:30px;padding:6px 12px;font-size:11px;letter-spacing:.1em;text-transform:uppercase}.hero h1{font-size:clamp(36px,5vw,62px);line-height:1.06;letter-spacing:-.05em;margin:22px 0}.hero h1 em{color:#62d7e5;font-style:normal}.hero p{color:#d0dde8;font-size:17px;max-width:490px}.hero-footer{font-size:12px;color:#aabccb}.auth-wrap{display:flex;align-items:center;justify-content:center;padding:26px}.auth-card{width:min(450px,100%);padding:34px 30px;border:1px solid var(--line);border-radius:18px;background:white;box-shadow:var(--shadow)}.auth-card h2{margin:0;font-size:25px;letter-spacing:-.04em}.auth-card>p{color:var(--muted);margin:6px 0 22px}.auth-tabs{display:flex;gap:5px;background:#f2f5f8;padding:4px;border-radius:9px;margin-bottom:19px}.auth-tabs button{flex:1;border:0;background:none;padding:8px;border-radius:7px;color:#697688;font-size:13px;font-weight:650}.auth-tabs button.active{background:white;color:var(--navy);box-shadow:0 1px 3px #18243a18}.field{margin-bottom:13px}.field label{display:block;font-size:12px;font-weight:700;color:#526071;margin-bottom:5px}.field input,.field select,.field textarea{width:100%;border:1px solid #d8e0e8;border-radius:9px;height:42px;padding:0 11px;background:#fff;color:var(--ink);outline:none}.field textarea{height:auto;padding:10px;min-height:86px;resize:vertical}.field input:focus,.field select:focus,.field textarea:focus{border-color:#6aabdf;box-shadow:0 0 0 3px #3e93ce1c}.hint{font-size:11px;color:#8692a1;margin-top:4px}.check{display:flex;gap:8px;align-items:flex-start;font-size:12px;color:#637083;margin:8px 0 15px}.check input{margin-top:3px;accent-color:var(--blue)}.btn{border:1px solid #d9e1e8;background:#fff;color:#30415a;border-radius:9px;padding:10px 13px;font-weight:700;font-size:13px}.btn:hover{border-color:#94a8ba}.btn.primary{background:var(--blue);border-color:var(--blue);color:white}.btn.primary:hover{background:#0959ba}.btn.cyan{background:var(--cyan);border-color:var(--cyan);color:#092633}.btn.full{width:100%}.btn.danger{color:var(--bad)}.btn.small{padding:7px 10px;font-size:12px}.notice{border:1px solid #f0dca8;background:#fff8e7;border-radius:9px;padding:10px 12px;color:#715a29;font-size:12px;margin-top:14px}.error{color:var(--bad);font-size:12px;margin:8px 0}.ok{color:var(--green);font-size:12px;margin:8px 0}.main-app{min-height:100vh;display:grid;grid-template-columns:248px 1fr}.sidebar{background:var(--navy);color:#edf4fa;display:flex;flex-direction:column;padding:22px 13px;gap:25px}.sidebar .logo{padding:0 10px}.sidebar .logo b{font-size:15px}.sidebar .logo span{display:block;font-size:11px;letter-spacing:.03em}.org-switch{margin:0 4px;border:1px solid #ffffff26;border-radius:10px;padding:10px 12px;color:#dae4ec;background:#ffffff0c}.org-switch small{display:block;color:#9eb1c2;font-size:10px}.org-switch strong{font-size:13px}.navgroup label{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#8ba1b4;padding:0 11px 7px}.nav{display:grid;gap:3px}.nav button{border:0;background:transparent;color:#c7d3df;text-align:left;border-radius:8px;padding:10px 11px;display:flex;align-items:center;gap:10px;font-size:13px}.nav button:hover,.nav button.active{background:#ffffff15;color:#fff}.nav .ico{width:18px;text-align:center}.sidebar-foot{margin-top:auto;border-top:1px solid #ffffff20;padding:14px 10px 0;color:#9eb1c2;font-size:11px}.sidebar-foot button{background:none;border:0;color:#d9e4ec;padding:8px 0;font-size:12px}.right{min-width:0}.topbar{height:64px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(17px,3vw,38px)}.breadcrumb{font-size:12px;color:var(--muted)}.profile{display:flex;align-items:center;gap:9px;font-size:12px;color:#47566a}.avatar{width:32px;height:32px;background:#e5f0fb;color:#1c63a7;display:grid;place-items:center;border-radius:50%;font-weight:800}.content{max-width:1460px;margin:auto;padding:28px clamp(16px,3vw,40px) 50px}.heading{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:19px}.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:10px;font-weight:800;color:var(--blue)}h1{font-size:clamp(24px,3vw,32px);line-height:1.2;letter-spacing:-.04em;margin:4px 0}.heading p{color:var(--muted);margin:6px 0 0;font-size:13px}.card{background:#fff;border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow)}.cardpad{padding:18px}.section-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}.section-head h2{font-size:16px;margin:0;letter-spacing:-.02em}.section-head p{font-size:12px;color:var(--muted);margin:3px 0 0}.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:13px}.col2{grid-column:span 2}.col3{grid-column:span 3}.col4{grid-column:span 4}.col6{grid-column:span 6}.col8{grid-column:span 8}.col12{grid-column:span 12}.field-row{margin:0}.tabbar{display:flex;gap:3px;overflow:auto;border-bottom:1px solid var(--line);margin-bottom:15px}.tabbar button{white-space:nowrap;border:0;background:transparent;padding:10px 13px;color:#718093;font-size:12px;font-weight:700;border-bottom:2px solid transparent}.tabbar button.active{color:var(--blue);border-color:var(--blue)}.switch{display:flex;background:#eff3f6;padding:3px;border-radius:8px;gap:3px}.switch button{border:0;background:none;border-radius:6px;padding:7px 11px;color:#66758a;font-size:12px;font-weight:700}.switch button.active{background:#fff;color:var(--blue);box-shadow:0 1px 3px #0a294018}.result-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin:15px 0}.metric{background:#fff;border:1px solid var(--line);border-radius:10px;padding:13px 14px}.metric span{font-size:10px;text-transform:uppercase;color:#758296;letter-spacing:.08em}.metric strong{display:block;font-size:19px;letter-spacing:-.04em;margin-top:3px}.metric small{color:#8490a0;font-size:10px}.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:10px}.table{width:100%;border-collapse:collapse;min-width:650px}.table th{text-align:left;padding:11px 12px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#758296;background:#f7f9fb;border-bottom:1px solid var(--line)}.table td{padding:11px 12px;border-bottom:1px solid #edf1f5;font-size:12px}.table tr:last-child td{border:0}.tag{display:inline-block;padding:3px 8px;border-radius:20px;background:#e4f5ee;color:#247c5e;font-size:10px;font-weight:750}.tag.blue{background:#e8f1fc;color:#2769ae}.tag.amber{background:#fff4d9;color:#8a6b16}.actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.message{padding:13px;border-radius:9px;background:#f2f7fc;color:#52657a;border:1px solid #dce8f3;font-size:12px}.message.warn{background:#fff9ec;border-color:#f0e1b4;color:#725c30}.message.success{background:#e9f6f0;border-color:#ceeadd;color:#2a7059}.empty{text-align:center;padding:36px 16px;color:var(--muted);font-size:13px}.logo-sample{width:58px;height:58px;object-fit:contain}.modal{position:fixed;inset:0;background:#07162988;display:none;place-items:center;padding:18px;z-index:99}.modal.open{display:grid}.dialog{background:white;border-radius:14px;padding:21px;width:min(520px,100%);max-height:90vh;overflow:auto;box-shadow:0 22px 70px #07162955}
+    .dialog.wide{width:min(900px,96%)}
+    .tab-nav{display:flex;gap:4px;border-bottom:2px solid #cbd6e2;margin-bottom:14px;flex-wrap:wrap}
+    .tab-btn{padding:8px 16px;border:1px solid #cbd6e2;background:#f8fafc;border-radius:6px 6px 0 0;cursor:pointer;font-weight:600;font-size:13px;color:#475569;display:inline-flex;align-items:center;gap:6px;border-bottom:none;transition:all 0.15s}
+    .tab-btn:hover{background:#eff6ff;color:#1468d4}
+    .tab-btn.active{background:#fff;color:#1468d4;border-color:#1468d4;border-bottom:2px solid #fff;margin-bottom:-2px}
+    .tab-pane{display:none}
+    .tab-pane.active{display:block}
+    .dropzone-box{border:2px dashed #94a3b8;border-radius:10px;padding:24px;text-align:center;background:#f8fafc;cursor:pointer;transition:all 0.2s}
+    .dropzone-box:hover,.dropzone-box.dragover{border-color:#1468d4;background:#eff6ff}
+    .badge-summary{display:inline-flex;align-items:center;padding:4px 10px;background:#e0f2fe;color:#0369a1;border-radius:20px;font-size:12px;font-weight:600;gap:6px}.dialog h2{margin:0 0 6px;font-size:20px}.dialog p{color:var(--muted);font-size:12px;margin:0 0 16px}.dialog-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:17px}.toast{position:fixed;right:20px;bottom:20px;max-width:min(400px,calc(100vw - 40px));background:#102d45;color:white;padding:12px 16px;border-radius:10px;font-size:12px;box-shadow:var(--shadow);opacity:0;transform:translateY(10px);transition:.2s;pointer-events:none;z-index:120}.toast.show{opacity:1;transform:none}.disclaimer{font-size:10px;color:#8b96a4;margin-top:12px}.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.plan-top{display:flex;align-items:center;justify-content:space-between;gap:8px}.plan-top h3{margin:0}.plan{padding:18px;border:1px solid var(--line);border-radius:13px;background:white}.plan.featured{border:2px solid var(--blue);box-shadow:0 10px 35px #1468d416}.plan h3{margin:0;font-size:17px}.plan p{color:var(--muted);font-size:12px;min-height:38px}.plan ul{padding-left:18px;color:#57667a;font-size:12px;line-height:1.8}.plan .price{font-size:22px;color:var(--blue);font-weight:800}.mini{font-size:10px;color:#8b96a4}.mobile-menu{display:none}
     @media(max-width:1000px){.main-app{grid-template-columns:210px 1fr}.result-grid{grid-template-columns:repeat(2,1fr)}.col2{grid-column:span 3}.col3{grid-column:span 4}}
     @media(max-width:740px){.login-layout{grid-template-columns:1fr}.hero{min-height:260px;padding:22px 24px}.hero-copy{margin:25px 0}.hero h1{font-size:34px}.hero p{font-size:14px}.hero-footer{display:none}.auth-wrap{padding:16px}.auth-card{padding:24px 18px}.main-app{grid-template-columns:1fr}.sidebar{display:none}.topbar{height:56px;padding:0 15px}.content{padding:20px 14px 36px}.heading{display:block}.heading>.btn{margin-top:12px}.grid{gap:10px}.col2,.col3,.col4,.col6,.col8{grid-column:span 6}.col12{grid-column:span 12}.result-grid{grid-template-columns:1fr 1fr}.plans{grid-template-columns:1fr}.topbar .breadcrumb{display:none}.mobile-menu{display:block;border:0;background:transparent;font-size:20px;color:var(--navy)}.tabbar button{padding:9px 10px}}
     @media(max-width:430px){.col2,.col3,.col4,.col6,.col8{grid-column:span 12}.result-grid{grid-template-columns:1fr 1fr}.result-grid .metric strong{font-size:16px}.profile .name{display:none}}
@@ -185,7 +196,18 @@
           </div>
         </div>
       </section>
-      <section class="view hidden" id="developmentsView"><div class="heading"><div><div class="eyebrow">Catálogo da empresa</div><h1>Empreendimentos</h1><p>Cadastre imóveis e loteamentos para acelerar simulações.</p></div><button class="btn primary" id="addDevelopment">＋ Novo empreendimento</button></div><div class="card tablewrap"><table class="table"><thead><tr><th>Nome</th><th>Tipo</th><th>Cidade / UF</th><th>Unidades / lotes</th><th>Valor de referência</th><th></th></tr></thead><tbody id="developmentRows"></tbody></table></div></section>
+      <section class="view hidden" id="developmentsView">
+        <div class="heading">
+          <div>
+            <div class="eyebrow">Catálogo da empresa</div>
+            <h1>Empreendimentos</h1>
+            <p>Cadastre incorporadoras, loteadoras e construtoras com todas as unidades, metragens, tipologias e valores (inclusive via planilha Excel).</p>
+          </div>
+          <div class="actions">
+            <button class="btn" id="btnImportUnitsExcel" title="Subir planilha Excel com unidades de qualquer empreendimento">📥 Importar unidades via Excel</button>
+            <button class="btn primary" id="addDevelopment">＋ Novo empreendimento</button>
+          </div>
+        </div><div class="card tablewrap"><table class="table"><thead><tr><th>Nome</th><th>Tipo</th><th>Cidade / UF</th><th>Unidades / lotes</th><th>Valor de referência</th><th></th></tr></thead><tbody id="developmentRows"></tbody></table></div></section>
       <section class="view hidden" id="branchesView"><div class="heading"><div><div class="eyebrow">Estrutura da empresa</div><h1>Filiais</h1><p>Organize unidades e compare o desempenho de cada operação.</p></div><button class="btn primary" id="addBranch">＋ Nova filial</button></div><div class="card tablewrap"><table class="table"><thead><tr><th>Unidade</th><th>Cidade / UF</th><th>Simulações</th><th>Volume financiado</th><th></th></tr></thead><tbody id="branchRows"></tbody></table></div><p class="disclaimer">Filiais são separações gerenciais dentro da empresa; o isolamento de dados continua por empresa.</p></section><section class="view hidden" id="teamView"><div class="heading"><div><div class="eyebrow">Acesso e gestão</div><h1>Usuários e equipe</h1><p>Convide usuários, altere papéis e revogue acesso nesta empresa.</p></div><button class="btn primary" id="inviteMember">＋ Cadastrar / convidar usuário</button></div><div class="message">Os membros ingressam usando o mesmo e-mail verificado com que foram convidados. A entrega automática de convites será configurada após provisionar o projeto Supabase e o serviço de e-mail.</div><div class="card tablewrap" style="margin-top:13px"><table class="table"><thead><tr><th>Usuário</th><th>Papel</th><th>Entrou em</th><th>Ações</th></tr></thead><tbody id="teamRows"></tbody></table></div></section>
       <section class="view hidden" id="profileView"><div class="heading"><div><div class="eyebrow">Sua conta</div><h1>Meu perfil</h1><p>Edite os dados de apresentação usados no CalcuLar. Esta tela não altera sua senha, e-mail de acesso nem dados financeiros.</p></div><div class="actions"><button class="btn danger" id="clearProfile">Limpar perfil</button><button class="btn primary" id="saveProfile">Salvar perfil</button></div></div><form id="profileForm" class="card cardpad"><div class="grid"><div class="field col6"><label for="profileFullName">Nome para exibição</label><input id="profileFullName" maxlength="120" autocomplete="name"></div><div class="field col6"><label for="profilePhone">Telefone de contato (opcional)</label><input id="profilePhone" maxlength="30" autocomplete="tel"></div><div class="field col6"><label for="profileJob">Cargo</label><input id="profileJob" maxlength="100" placeholder="Ex.: Corretor(a)"></div><div class="field col6"><label for="profileDepartment">Área / equipe</label><input id="profileDepartment" maxlength="100"></div><div class="field col3"><label for="profileCity">Cidade</label><input id="profileCity" maxlength="100" autocomplete="address-level2"></div><div class="field col3"><label for="profileState">UF</label><input id="profileState" maxlength="2" autocomplete="address-level1"></div><div class="field col6"><label for="profileBio">Apresentação (opcional)</label><input id="profileBio" maxlength="240" placeholder="Breve descrição profissional"></div><div class="col12 message warn">Não informe CPF, senha, dados bancários, documentos ou informações de crédito neste perfil.</div></div></form></section>
       <section class="view hidden" id="settingsView"><div class="heading"><div><div class="eyebrow">Identidade e regras</div><h1>Configurações</h1><p>Personalize os resultados da empresa e os campos do simulador.</p></div><button class="btn primary" id="saveSettings">Salvar configuração</button></div><div class="grid"><div class="card cardpad col6"><div class="section-head"><div><h2>Marca da empresa</h2><p>Identidade exibida nos relatórios PDF.</p></div></div><div class="field"><label for="companyName">Nome exibido</label><input id="companyName"></div><div class="field"><label for="brandColor">Cor principal</label><input id="brandColor" type="color" value="#1468d4" style="max-width:120px;padding:4px"></div><div class="field"><label for="brandLogo">Logo da empresa (PNG/JPG, até 500 KB)</label><input id="brandLogo" type="file" accept="image/png,image/jpeg,image/webp"><img id="brandPreview" alt="Prévia do logo da empresa" class="hidden" style="max-width:150px;max-height:70px;object-fit:contain;margin-top:8px"></div><div class="field"><label for="disclaimerText">Aviso dos resultados</label><textarea id="disclaimerText" placeholder="Texto exibido em simulações e relatórios"></textarea></div></div><div class="card cardpad col6"><div class="section-head"><div><h2>Preferências de cálculo</h2><p>Parâmetros padrão para novos cenários.</p></div></div><div class="field"><label for="itbiRate">ITBI padrão da localidade (%)</label><input id="itbiRate" type="number" min="0" max="100" step="0.0001" value="0"><div class="hint">Informe a alíquota aplicável à cidade e à operação.</div></div><div class="field"><label for="registryFee">Estimativa de cartório (R$)</label><input id="registryFee" type="number" min="0" step="0.01" value="0"></div><div class="field"><label for="feeReference">Referência dos custos</label><input id="feeReference" maxlength="160" placeholder="Cidade/UF e ano da tabela"></div><div class="field"><label for="defaultCorrection">Periodicidade de correção (meses)</label><input id="defaultCorrection" type="number" min="1" value="12"></div><div class="field"><label for="incomeLimit">Comprometimento máximo de renda (%)</label><input id="incomeLimit" type="number" min="1" max="100" value="30"></div><div class="message warn">O CalcuLar não inclui análise de crédito, consulta de CPF nem condições oficiais de bancos sem contrato de integração. Taxas e índices são definidos pela empresa.</div><div class="card cardpad col12" id="adminControlCard" style="border: 1px solid #1468d4; background: #f0f7ff; margin-top: 14px;"><div class="section-head"><div><h2 style="color: #1468d4;">Painel do Administrador Geral (Acesso Total)</h2><p>Gerenciamento autônomo dos dados, exportação de backup e redefinição.</p></div></div><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><button type="button" class="btn small" id="btnAdminExportData">Exportar backup (JSON)</button><button type="button" class="btn small danger" id="btnAdminResetData">Restaurar dados padrão</button><span class="mini" style="color:#475669">Modo Administrador ativo · Permissões totais de criação, edição e exclusão</span></div></div></div></div></section>
@@ -923,20 +945,21 @@
           return list;
         }
         if (method === 'POST') {
-          const item = {
-            id: body?.id || `unit-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+          const items = Array.isArray(body) ? body : [body];
+          const created = items.map((b, idx) => ({
+            id: b?.id || `unit-${Date.now()}-${idx}-${Math.random().toString(36).slice(2, 6)}`,
             created_at: new Date().toISOString(),
             updated_at: new Date().toISOString(),
             organization_id: store.org.id,
             created_by: store.user.id,
-            images: [],
-            features: {},
-            ...body
-          };
+            images: b?.images || [],
+            features: b?.features || {},
+            ...b
+          }));
           store.units = store.units || [];
-          store.units.unshift(item);
+          store.units = [...created, ...store.units];
           saveAdminStore(store);
-          return [item];
+          return created;
         }
         if (method === 'PATCH') {
           const id = getParam('id');
@@ -1365,7 +1388,7 @@
       showAuth();
       toast('Sessão encerrada.');
     };
-    function openModal(title,desc,html,onSave){$('#modalTitle').textContent=title;$('#modalDesc').textContent=desc;$('#modalBody').innerHTML=html;$('#modal').classList.add('open');$('#modalConfirm').onclick=async()=>{try{await onSave();$('#modal').classList.remove('open')}catch(e){toast(e.message)}}}
+    function openModal(title,desc,html,onSave,opts={}){$('#modalTitle').textContent=title;$('#modalDesc').textContent=desc;$('#modalBody').innerHTML=html;const dlg=$('#modal .dialog');if(dlg)dlg.classList.toggle('wide',Boolean(opts.wide));$('#modal').classList.add('open');$('#modalConfirm').onclick=async()=>{try{await onSave();$('#modal').classList.remove('open')}catch(e){toast(e.message)}}}
     $('#modalCancel').onclick=()=>$('#modal').classList.remove('open');$('#modal').onclick=e=>{if(e.target===$('#modal'))$('#modal').classList.remove('open')};
     async function loadOrganizations(){const rows=await rest('organization_members?select=role,organization_id,organizations(id,name,slug,plan,brand_color,brand_logo_data_url,disclaimer,correction_months,income_limit_pct,itbi_rate_pct,registry_fee_estimate,fee_reference,commercial_plans)&user_id=eq.'+encodeURIComponent(user.id));return rows.map(x=>({...x.organizations,role:x.role}))}
     async function boot(){
@@ -1636,12 +1659,288 @@
       entregue: 'blue'
     };
 
+        // -------------------------------------------------------------------------
+    // GERADOR DE MODELOS E PARSER DE PLANILHAS EXCEL / CSV DE UNIDADES
+    // -------------------------------------------------------------------------
+    function downloadUnitsTemplate(format = 'xlsx') {
+      const headers = [
+        'Identificador',
+        'Bloco_Quadra',
+        'Tipologia',
+        'Area_Privativa_m2',
+        'Area_Total_m2',
+        'Preco_Base_R$',
+        'Valor_m2_R$',
+        'Permite_Fracionado',
+        'Metragem_Minima_Fracionada',
+        'Observacoes'
+      ];
+      const sampleRows = [
+        ['Lote 01', 'Quadra A', 'Lote / Terreno', 250.00, 250.00, 150000.00, 600.00, 'Nao', '', 'Lote plano proximo a portaria'],
+        ['Lote 02', 'Quadra A', 'Lote / Terreno', 250.00, 250.00, 150000.00, 600.00, 'Nao', '', 'Lote de meio de quadra'],
+        ['Lote 15', 'Quadra B', 'Lote / Terreno', 360.00, 360.00, 216000.00, 600.00, 'Sim', 180.00, 'Lote de esquina fracionavel'],
+        ['Apto 101', 'Torre 1', 'Apartamento', 68.50, 95.00, 380000.00, 5547.45, 'Nao', '', 'Sol da manha com 1 vaga'],
+        ['Apto 102', 'Torre 1', 'Apartamento', 85.00, 115.00, 480000.00, 5647.06, 'Nao', '', '3 quartos sendo 1 suite'],
+        ['Casa 08', 'Fase 1', 'Casa em Condomínio', 145.00, 280.00, 650000.00, 4482.76, 'Nao', '', 'Piscina e churrasqueira gourmet'],
+        ['Sala 304', 'Bloco Comercial', 'Sala Comercial', 42.00, 55.00, 260000.00, 6190.48, 'Nao', '', 'Pronta com piso porcelanato']
+      ];
+
+      if (format === 'xlsx' && window.XLSX) {
+        const ws = XLSX.utils.aoa_to_sheet([headers, ...sampleRows]);
+        ws['!cols'] = [
+          { wch: 15 }, { wch: 15 }, { wch: 22 }, { wch: 18 }, { wch: 18 },
+          { wch: 18 }, { wch: 16 }, { wch: 18 }, { wch: 26 }, { wch: 32 }
+        ];
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, 'Unidades');
+        XLSX.writeFile(wb, 'modelo_cadastro_unidades_calcular.xlsx');
+        toast('Planilha modelo Excel (.xlsx) baixada com sucesso!');
+      } else {
+        const csvContent = '\uFEFF' + [headers, ...sampleRows].map(row => 
+          row.map(val => {
+            const s = String(val ?? '');
+            return s.includes(';') || s.includes('"') || s.includes('\n') ? `"${s.replace(/"/g, '""')}"` : s;
+          }).join(';')
+        ).join('\r\n');
+
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.setAttribute('download', 'modelo_cadastro_unidades_calcular.csv');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        toast('Planilha modelo CSV baixada com sucesso!');
+      }
+    }
+
+    function parseUnitsSpreadsheet(file, callback) {
+      if (!file) return;
+      const isXlsx = file.name.endsWith('.xlsx') || file.name.endsWith('.xls');
+
+      const normalizeHeader = (s) => String(s || '').toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]/g, '');
+
+      const cleanNum = (v) => {
+        if (v == null || v === '') return 0;
+        if (typeof v === 'number') return v;
+        const s = String(v).replace(/R\$/gi, '').trim();
+        return Number(s.replace(/\./g, '').replace(',', '.').replace(/[^\d.-]/g, '')) || 0;
+      };
+
+      const mapCategory = (raw) => {
+        const s = normalizeHeader(raw);
+        if (s.includes('apart') || s.includes('apto')) return 'apartamento';
+        if (s.includes('condominio')) return 'casa_condominio';
+        if (s.includes('sobrado')) return 'sobrado';
+        if (s.includes('casa')) return 'casa';
+        if (s.includes('lote') || s.includes('terreno')) return 'lote';
+        if (s.includes('cobertura')) return 'cobertura';
+        if (s.includes('studio') || s.includes('kitnet')) return 'studio';
+        if (s.includes('sala') || s.includes('comercial')) return 'sala_comercial';
+        if (s.includes('galpao')) return 'galpao';
+        return 'apartamento';
+      };
+
+      const processRows = (rows) => {
+        if (!rows || rows.length < 2) throw new Error('A planilha está vazia ou não possui linhas de dados.');
+        const rawHeaders = rows[0];
+        const colMap = {};
+
+        rawHeaders.forEach((h, idx) => {
+          const norm = normalizeHeader(h);
+          if (['identificador', 'numero', 'unidade', 'lote', 'num', 'unit', 'codigo'].some(k => norm.includes(k))) colMap.unit_number = idx;
+          else if (['bloco', 'quadra', 'torre', 'etapa', 'fase', 'block'].some(k => norm.includes(k))) colMap.block = idx;
+          else if (['tipologia', 'tipo', 'categoria', 'category'].some(k => norm.includes(k))) colMap.category = idx;
+          else if (['areaprivativa', 'areaconstruida', 'metragem', 'privativa', 'm2priv'].some(k => norm.includes(k))) colMap.area_built = idx;
+          else if (['areatotal', 'terreno', 'areaterreno', 'total', 'm2total'].some(k => norm.includes(k))) colMap.area_total = idx;
+          else if (['precobase', 'preco', 'valor', 'valorunitario', 'valortotal', 'price'].some(k => norm.includes(k))) colMap.base_price = idx;
+          else if (['valorm2', 'precom2', 'm2valor'].some(k => norm.includes(k))) colMap.price_per_meter = idx;
+          else if (['permitefracionado', 'fracionavel', 'fracionado'].some(k => norm.includes(k))) colMap.allow_fractional = idx;
+          else if (['metragemminima', 'minfrac'].some(k => norm.includes(k))) colMap.min_fractional_area = idx;
+          else if (['observacoes', 'obs', 'notas'].some(k => norm.includes(k))) colMap.notes = idx;
+        });
+
+        // Fallbacks se não encontrou cabeçalho exato
+        if (colMap.unit_number == null) colMap.unit_number = 0;
+        if (colMap.block == null && rawHeaders.length > 1) colMap.block = 1;
+        if (colMap.base_price == null) {
+          rawHeaders.forEach((h, idx) => {
+            const norm = normalizeHeader(h);
+            if (norm.includes('valor') || norm.includes('preco') || norm.includes('rs')) colMap.base_price = idx;
+          });
+        }
+
+        const units = [];
+        let totalVgv = 0;
+        let totalArea = 0;
+
+        for (let r = 1; r < rows.length; r++) {
+          const row = rows[r];
+          if (!row || row.every(cell => cell == null || String(cell).trim() === '')) continue;
+
+          let num = String(row[colMap.unit_number] ?? '').trim();
+          if (!num) num = `Unid. ${r}`;
+
+          const block = colMap.block != null ? String(row[colMap.block] ?? '').trim() : '';
+          const cat = colMap.category != null && row[colMap.category] ? mapCategory(row[colMap.category]) : 'apartamento';
+          let areaBuilt = colMap.area_built != null ? cleanNum(row[colMap.area_built]) : 0;
+          let areaTotal = colMap.area_total != null ? cleanNum(row[colMap.area_total]) : 0;
+          if (!areaBuilt && areaTotal) areaBuilt = areaTotal;
+          if (!areaTotal && areaBuilt) areaTotal = areaBuilt;
+
+          let basePrice = colMap.base_price != null ? cleanNum(row[colMap.base_price]) : 0;
+          let meterPrice = colMap.price_per_meter != null ? cleanNum(row[colMap.price_per_meter]) : 0;
+
+          if (basePrice === 0 && meterPrice > 0 && (areaBuilt || areaTotal)) {
+            basePrice = meterPrice * (areaBuilt || areaTotal);
+          } else if (meterPrice === 0 && basePrice > 0 && (areaBuilt || areaTotal)) {
+            meterPrice = basePrice / (areaBuilt || areaTotal);
+          }
+
+          const allowFracStr = colMap.allow_fractional != null ? String(row[colMap.allow_fractional] ?? '').toLowerCase() : '';
+          const allowFrac = allowFracStr.includes('s') || allowFracStr.includes('true') || allowFracStr.includes('1');
+          const minFrac = colMap.min_fractional_area != null ? cleanNum(row[colMap.min_fractional_area]) : null;
+          const notes = colMap.notes != null ? String(row[colMap.notes] ?? '').trim() : '';
+
+          totalVgv += basePrice;
+          totalArea += (areaBuilt || areaTotal || 0);
+
+          units.push({
+            unit_number: num,
+            block: block || null,
+            category: cat,
+            area_built: areaBuilt || null,
+            area_total: areaTotal || null,
+            base_price: basePrice,
+            price_per_meter: meterPrice || null,
+            pricing_model: 'direct',
+            allow_fractional: allowFrac,
+            min_fractional_area: minFrac,
+            status: 'disponivel',
+            notes: notes || null
+          });
+        }
+
+        if (!units.length) throw new Error('Nenhuma unidade válida encontrada na planilha.');
+
+        callback({
+          units,
+          total_count: units.length,
+          total_vgv: totalVgv,
+          total_area: totalArea,
+          avg_price: units.length ? totalVgv / units.length : 0
+        });
+      };
+
+      if (isXlsx && window.XLSX) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          try {
+            const data = new Uint8Array(e.target.result);
+            const workbook = XLSX.read(data, { type: 'array' });
+            const firstSheetName = workbook.SheetNames[0];
+            const worksheet = workbook.Sheets[firstSheetName];
+            const jsonRows = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+            processRows(jsonRows);
+          } catch (err) {
+            toast('Erro ao ler arquivo Excel: ' + err.message);
+          }
+        };
+        reader.readAsArrayBuffer(file);
+      } else {
+        // Fallback leitor CSV/TSV
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          try {
+            const text = e.target.result;
+            const lines = text.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
+            if (!lines.length) throw new Error('Arquivo vazio');
+            
+            // Detectar separador (; ou , ou \t)
+            const firstLine = lines[0];
+            const sep = firstLine.includes(';') ? ';' : (firstLine.includes('\t') ? '\t' : ',');
+            
+            const rows = lines.map(line => {
+              // Simples split respeitando aspas
+              const cells = [];
+              let cur = '';
+              let inQ = false;
+              for (let i = 0; i < line.length; i++) {
+                const c = line[i];
+                if (c === '"') { inQ = !inQ; }
+                else if (c === sep && !inQ) { cells.push(cur.trim()); cur = ''; }
+                else { cur += c; }
+              }
+              cells.push(cur.trim());
+              return cells;
+            });
+            processRows(rows);
+          } catch (err) {
+            toast('Erro ao ler arquivo CSV: ' + err.message);
+          }
+        };
+        reader.readAsText(file, 'utf-8');
+      }
+    }
+
+    function generateBatchUnits(params) {
+      const units = [];
+      const { mode, blocksStr, countPerBlock, cat, areaBuilt, areaTotal, price, isPricePerMeter, allowFrac } = params;
+
+      const blocks = (blocksStr || '').split(',').map(s => s.trim()).filter(Boolean);
+      if (!blocks.length) blocks.push('Geral');
+
+      let seq = 1;
+      blocks.forEach(blk => {
+        for (let i = 1; i <= countPerBlock; i++) {
+          const numPadded = i < 10 ? `0${i}` : `${i}`;
+          let unitNum = '';
+          if (mode === 'lote') unitNum = `Lote ${numPadded}`;
+          else if (mode === 'apto') unitNum = `Apto ${blk ? blk + '-' : ''}${numPadded}`;
+          else if (mode === 'casa') unitNum = `Casa ${numPadded}`;
+          else unitNum = `Unid. ${seq}`;
+
+          let basePrice = Number(price) || 0;
+          let meterPrice = null;
+          const aBuilt = Number(areaBuilt) || null;
+          const aTotal = Number(areaTotal) || null;
+          const effectiveArea = aBuilt || aTotal || 1;
+
+          if (isPricePerMeter) {
+            meterPrice = basePrice;
+            basePrice = meterPrice * effectiveArea;
+          } else if (effectiveArea > 0 && basePrice > 0) {
+            meterPrice = basePrice / effectiveArea;
+          }
+
+          units.push({
+            unit_number: unitNum,
+            block: blk,
+            category: cat || (mode === 'lote' ? 'lote' : (mode === 'casa' ? 'casa' : 'apartamento')),
+            area_built: aBuilt,
+            area_total: aTotal,
+            base_price: basePrice,
+            price_per_meter: meterPrice,
+            pricing_model: 'direct',
+            allow_fractional: Boolean(allowFrac),
+            min_fractional_area: allowFrac ? (effectiveArea / 2) : null,
+            status: 'disponivel',
+            notes: `Gerado automaticamente em lote (${blk})`
+          });
+          seq++;
+        }
+      });
+      return units;
+    }
+
     function paintDevelopments(){
       const rows = currentDeals;
       $('#developmentRows').innerHTML = rows.length ? rows.map(x => {
         const stageLabel = labelDevStage[x.stage] || 'Em Obras';
         const stageTag = tagClassDevStage[x.stage] || 'amber';
-        const unitCount = (currentUnits || []).filter(u => u.development_id === x.id).length || x.units_count || '—';
+        const unitCount = (currentUnits || []).filter(u => u.development_id === x.id).length || x.units_count || '0';
         return `<tr>
           <td>
             <strong>${esc(x.name)}</strong>
@@ -1650,17 +1949,20 @@
           </td>
           <td>${labelProduct[x.product_type] || esc(x.product_type)}</td>
           <td>${esc(x.address || '') ? esc(x.address) + ' · ' : ''}${esc(x.city || '—')} / ${esc(x.state || '—')}</td>
-          <td><b>${unitCount}</b> unid.</td>
-          <td>${currency(x.reference_value)}</td>
+          <td><b style="color:#1468d4">${unitCount}</b> unid.</td>
+          <td><b>${currency(x.reference_value)}</b></td>
           <td>
             <div class="actions">
-              <button class="btn small" data-dev-view-units="${x.id}" title="Ver e gerenciar unidades deste empreendimento">Unidades</button>
+              <button class="btn small primary" data-dev-import-excel="${x.id}" title="Subir planilha Excel com as unidades deste empreendimento">📥 Importar Excel</button>
+              <button class="btn small" data-dev-view-units="${x.id}" title="Ver e gerenciar unidades deste empreendimento">Unidades (${unitCount})</button>
               <button class="btn small" data-dev-edit="${x.id}" title="Editar dados do empreendimento">Editar</button>
               <button class="btn small danger" data-deal-del="${x.id}">Excluir</button>
             </div>
           </td>
         </tr>`;
       }).join('') : '<tr><td colspan="6" class="empty">Nenhum empreendimento cadastrado.</td></tr>';
+
+      $$('[data-dev-import-excel]').forEach(b => b.onclick = () => openExcelImportModal(b.dataset.devImportExcel));
 
       $$('[data-dev-view-units]').forEach(b => b.onclick = () => {
         const devId = b.dataset.devViewUnits;
@@ -1676,6 +1978,618 @@
         await refreshView();
         toast('Empreendimento removido.');
       });
+    }
+
+    // -------------------------------------------------------------------------
+    // MODAL DE CADASTRO DE EMPREENDIMENTO COM UNIDADES FACILITADAS (EXCEL/LOTE)
+    // -------------------------------------------------------------------------
+    function openNewDevelopmentModal(){
+      let stagedUnits = [];
+
+      const updateSummary = () => {
+        const count = stagedUnits.length;
+        const totalVgv = stagedUnits.reduce((sum, u) => sum + (Number(u.base_price) || 0), 0);
+        const totalArea = stagedUnits.reduce((sum, u) => sum + (Number(u.area_built) || Number(u.area_total) || 0), 0);
+        
+        if ($('#devUnitsReadyCount')) $('#devUnitsReadyCount').textContent = `${count} unidade(s) pronta(s)`;
+        if ($('#devUnitsReadyVgv')) $('#devUnitsReadyVgv').textContent = `VGV Total: ${currency(totalVgv)} | Área: ${new Intl.NumberFormat('pt-BR').format(totalArea)} m²`;
+      };
+
+      const renderPreviewTable = () => {
+        const wrap = $('#devExcelPreviewWrap');
+        const summaryEl = $('#devExcelSummary');
+        const tbody = $('#devExcelPreviewBody');
+        if (!wrap || !tbody) return;
+
+        if (!stagedUnits.length) {
+          wrap.classList.add('hidden');
+          if (summaryEl) summaryEl.classList.add('hidden');
+          updateSummary();
+          return;
+        }
+
+        wrap.classList.remove('hidden');
+        if (summaryEl) {
+          summaryEl.classList.remove('hidden');
+          const totalVgv = stagedUnits.reduce((sum, u) => sum + (Number(u.base_price) || 0), 0);
+          summaryEl.innerHTML = `
+            <div style="background:#e0f2fe;border:1px solid #7dd3fc;border-radius:8px;padding:10px 14px;color:#0369a1;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+              <div>
+                <strong>✓ ${stagedUnits.length} unidades carregadas</strong> · VGV Total: <b>${currency(totalVgv)}</b>
+              </div>
+              <button type="button" class="btn small" id="btnClearStagedUnits" style="background:#fff;color:#0369a1;border:1px solid #7dd3fc">Limpar lista</button>
+            </div>
+          `;
+          if ($('#btnClearStagedUnits')) {
+            $('#btnClearStagedUnits').onclick = () => {
+              stagedUnits = [];
+              renderPreviewTable();
+            };
+          }
+        }
+
+        tbody.innerHTML = stagedUnits.slice(0, 50).map(u => `
+          <tr>
+            <td><strong>${esc(u.unit_number)}</strong></td>
+            <td>${esc(u.block || '—')}</td>
+            <td><span class="tag blue" style="font-size:10px">${labelUnitCategory[u.category] || esc(u.category)}</span></td>
+            <td>${u.area_built ? Number(u.area_built).toFixed(2)+' m²' : '—'}</td>
+            <td>${u.area_total ? Number(u.area_total).toFixed(2)+' m²' : '—'}</td>
+            <td><b>${currency(u.base_price)}</b></td>
+            <td>${u.price_per_meter ? currency(u.price_per_meter)+'/m²' : '—'}</td>
+          </tr>
+        `).join('') + (stagedUnits.length > 50 ? `<tr><td colspan="7" style="text-align:center;color:#64748b;font-style:italic">... e mais ${stagedUnits.length - 50} unidade(s) na planilha.</td></tr>` : '');
+
+        updateSummary();
+      };
+
+      const modalHtml = `
+        <div class="grid">
+          <div class="field col6">
+            <label>Nome do empreendimento *</label>
+            <input id="newDevName" placeholder="Ex.: Loteamento Bosque Real, Edifício Reserva Jardins" required>
+          </div>
+          <div class="field col3">
+            <label>Perfil da empresa / Tipo</label>
+            <select id="newDevType">
+              <option value="loteamento">Loteadora · Loteamento / Terrenos</option>
+              <option value="imovel">Incorporadora · Edifício / Apartamentos</option>
+              <option value="casa">Construtora · Casas / Condomínio</option>
+              <option value="comercial">Comercial · Salas / Lojas / Galpões</option>
+            </select>
+          </div>
+          <div class="field col3">
+            <label>Situação / Estágio</label>
+            <select id="newDevStage">
+              <option value="lancamento">Lançamento</option>
+              <option value="em_obras" selected>Em Obras</option>
+              <option value="breve_lancamento">Breve Lançamento</option>
+              <option value="pronto">Pronto para Morar</option>
+              <option value="entregue">Entregue</option>
+            </select>
+          </div>
+          <div class="field col6">
+            <label>Cidade</label>
+            <input id="newDevCity" placeholder="Ex.: São Paulo">
+          </div>
+          <div class="field col2">
+            <label>UF</label>
+            <input id="newDevState" maxlength="2" placeholder="SP">
+          </div>
+          <div class="field col4">
+            <label>Endereço / Localização</label>
+            <input id="newDevAddress" placeholder="Bairro ou endereço completo">
+          </div>
+          <div class="field col12">
+            <label>Descrição ou diferenciais</label>
+            <input id="newDevDesc" placeholder="Breve apresentação para compradores e corretores">
+          </div>
+        </div>
+
+        <div style="margin-top:16px;border-top:2px solid #e2e8f0;padding-top:14px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:8px">
+            <div>
+              <h3 style="margin:0;font-size:15px;color:#101e35">📦 Cadastro Facilitado de Unidades e Valores</h3>
+              <p style="margin:2px 0 0;font-size:12px;color:#64748b">Adicione todas as unidades via planilha Excel, gerador em lote ou grade manual.</p>
+            </div>
+            <div style="display:flex;gap:6px">
+              <button type="button" class="btn small" id="btnDevTplXlsx">⬇ Baixar Modelo Excel (.xlsx)</button>
+              <button type="button" class="btn small" id="btnDevTplCsv">⬇ Baixar Modelo (.csv)</button>
+            </div>
+          </div>
+
+          <div class="tab-nav">
+            <button type="button" class="tab-btn active" data-dev-tab="excel">📊 1. Subir Planilha Excel / CSV</button>
+            <button type="button" class="tab-btn" data-dev-tab="batch">⚡ 2. Gerador Rápido em Lote</button>
+            <button type="button" class="tab-btn" data-dev-tab="manual">📝 3. Grade Manual</button>
+          </div>
+
+          <!-- TAB 1: EXCEL / CSV -->
+          <div class="tab-pane active" id="paneDevExcel">
+            <div class="dropzone-box" id="devDropzone">
+              <div style="font-size:28px;margin-bottom:6px">📊</div>
+              <strong>Arraste sua planilha Excel aqui ou clique para selecionar</strong>
+              <div style="font-size:12px;color:#64748b;margin-top:4px">Suporta arquivos .xlsx, .xls ou .csv com colunas de identificador, bloco, tipologia, metragem e valor</div>
+              <input type="file" id="devFileInput" class="hidden" accept=".xlsx,.xls,.csv,.txt">
+              <button type="button" class="btn small primary" style="margin-top:12px" id="btnTriggerDevFile">＋ Escolher arquivo da planilha</button>
+            </div>
+            <div id="devExcelSummary" class="hidden" style="margin-top:10px"></div>
+            <div id="devExcelPreviewWrap" class="hidden tablewrap" style="max-height:190px;overflow:auto;margin-top:8px;border:1px solid #cbd6e2;border-radius:6px">
+              <table class="table" style="font-size:12px">
+                <thead>
+                  <tr style="background:#f1f5f9">
+                    <th>Identificador</th><th>Bloco/Quadra</th><th>Tipologia</th><th>Área Priv.</th><th>Área Tot.</th><th>Valor (R$)</th><th>R$/m²</th>
+                  </tr>
+                </thead>
+                <tbody id="devExcelPreviewBody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- TAB 2: GERADOR RÁPIDO EM LOTE -->
+          <div class="tab-pane" id="paneDevBatch">
+            <div class="grid">
+              <div class="field col4">
+                <label>Modo de geração</label>
+                <select id="genBatchMode">
+                  <option value="lote">Loteadora · Lotes por Quadra</option>
+                  <option value="apto">Incorporadora · Aptos por Torre</option>
+                  <option value="casa">Construtora · Casas Numeradas</option>
+                </select>
+              </div>
+              <div class="field col4">
+                <label>Blocos / Quadras / Torres</label>
+                <input id="genBatchBlocks" value="Quadra A, Quadra B, Quadra C" placeholder="Ex.: Quadra A, Quadra B">
+              </div>
+              <div class="field col4">
+                <label>Unidades por bloco</label>
+                <input id="genBatchCount" type="number" value="15" min="1" max="500">
+              </div>
+              <div class="field col3">
+                <label>Tipologia padrão</label>
+                <select id="genBatchCat">
+                  <option value="lote">Lote / Terreno</option>
+                  <option value="apartamento">Apartamento</option>
+                  <option value="casa">Casa</option>
+                  <option value="casa_condominio">Casa em Condomínio</option>
+                  <option value="sala_comercial">Sala Comercial</option>
+                </select>
+              </div>
+              <div class="field col3">
+                <label>Metragem padrão (m²)</label>
+                <input id="genBatchArea" type="number" step="0.01" value="250.00">
+              </div>
+              <div class="field col3">
+                <label>Preço ou R$/m²</label>
+                <input id="genBatchPrice" type="number" step="0.01" value="150000.00">
+              </div>
+              <div class="field col3">
+                <label>Tipo de valor</label>
+                <select id="genBatchPriceType">
+                  <option value="fixed">Valor total da unidade (R$)</option>
+                  <option value="meter">Valor por metro quadrado (R$/m²)</option>
+                </select>
+              </div>
+              <div class="field col12">
+                <button type="button" class="btn primary" id="btnRunGenBatch">⚡ Gerar e Adicionar à Lista de Unidades</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: GRADE MANUAL -->
+          <div class="tab-pane" id="paneDevManual">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+              <span class="mini" style="color:#64748b">Adicione ou edite unidades manualmente na tabela abaixo:</span>
+              <button type="button" class="btn small" id="btnAddManualUnitRow">＋ Adicionar linha</button>
+            </div>
+            <div class="tablewrap" style="max-height:190px;overflow:auto;border:1px solid #cbd6e2;border-radius:6px">
+              <table class="table" style="font-size:12px">
+                <thead>
+                  <tr style="background:#f1f5f9">
+                    <th>Nº / Lote</th><th>Bloco</th><th>Tipologia</th><th>Área (m²)</th><th>Valor (R$)</th><th></th>
+                  </tr>
+                </thead>
+                <tbody id="devManualRows"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div id="devUnitsOverallSummary" style="margin-top:14px;padding:10px 14px;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+            <div>
+              <span style="font-size:13px;font-weight:600;color:#1e293b">Unidades prontas para cadastro:</span>
+              <span id="devUnitsReadyCount" class="badge-summary" style="margin-left:6px">0 unidade(s)</span>
+            </div>
+            <div id="devUnitsReadyVgv" style="font-size:13px;font-weight:700;color:#1468d4">
+              VGV Total: R$ 0,00
+            </div>
+          </div>
+        </div>
+      `;
+
+      openModal('Novo Empreendimento & Cadastro de Unidades', 'Cadastre o empreendimento da incorporadora, loteadora ou construtora com todas as unidades, metragens e valores.', modalHtml, async () => {
+        const name = $('#newDevName')?.value.trim();
+        if (!name) throw new Error('Informe o nome do empreendimento.');
+
+        const devPayload = {
+          organization_id: org.id,
+          name,
+          product_type: $('#newDevType')?.value || 'loteamento',
+          stage: $('#newDevStage')?.value || 'em_obras',
+          city: $('#newDevCity')?.value.trim() || '',
+          state: $('#newDevState')?.value.trim().toUpperCase() || '',
+          address: $('#newDevAddress')?.value.trim() || '',
+          description: $('#newDevDesc')?.value.trim() || '',
+          units_count: stagedUnits.length || 0,
+          reference_value: stagedUnits.reduce((s, u) => s + (Number(u.base_price) || 0), 0) || 0,
+          created_by: user.id
+        };
+
+        const createdDevRows = await rest('developments?select=*', {
+          method: 'POST',
+          headers: { Prefer: 'return=representation' },
+          body: JSON.stringify(devPayload)
+        });
+
+        const createdDev = createdDevRows?.[0] || createdDevRows;
+        const devId = createdDev?.id;
+
+        if (devId && stagedUnits.length > 0) {
+          const unitsToSave = stagedUnits.map(u => ({
+            organization_id: org.id,
+            development_id: devId,
+            unit_number: u.unit_number,
+            block: u.block || null,
+            category: u.category || 'apartamento',
+            area_built: u.area_built || null,
+            area_total: u.area_total || null,
+            base_price: Number(u.base_price) || 0,
+            price_per_meter: Number(u.price_per_meter) || null,
+            pricing_model: u.pricing_model || 'direct',
+            allow_fractional: Boolean(u.allow_fractional),
+            min_fractional_area: u.min_fractional_area || null,
+            status: u.status || 'disponivel',
+            notes: u.notes || null,
+            created_by: user.id
+          }));
+
+          await rest('units', {
+            method: 'POST',
+            body: JSON.stringify(unitsToSave)
+          });
+        }
+
+        await refreshView();
+        toast(`Empreendimento "${name}" cadastrado com sucesso com ${stagedUnits.length} unidades registradas!`);
+      }, { wide: true });
+
+      // Configuração de abas
+      $$('[data-dev-tab]').forEach(btn => {
+        btn.onclick = () => {
+          $$('[data-dev-tab]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const tab = btn.dataset.devTab;
+          $('#paneDevExcel').classList.toggle('active', tab === 'excel');
+          $('#paneDevBatch').classList.toggle('active', tab === 'batch');
+          $('#paneDevManual').classList.toggle('active', tab === 'manual');
+        };
+      });
+
+      // Botões de modelo de planilha
+      if ($('#btnDevTplXlsx')) $('#btnDevTplXlsx').onclick = () => downloadUnitsTemplate('xlsx');
+      if ($('#btnDevTplCsv')) $('#btnDevTplCsv').onclick = () => downloadUnitsTemplate('csv');
+
+      // Dropzone e input file
+      const fileInput = $('#devFileInput');
+      const dropzone = $('#devDropzone');
+      if ($('#btnTriggerDevFile')) $('#btnTriggerDevFile').onclick = (e) => { e.stopPropagation(); fileInput.click(); };
+      if (dropzone) {
+        dropzone.onclick = () => fileInput.click();
+        dropzone.ondragover = (e) => { e.preventDefault(); dropzone.classList.add('dragover'); };
+        dropzone.ondragleave = () => dropzone.classList.remove('dragover');
+        dropzone.ondrop = (e) => {
+          e.preventDefault();
+          dropzone.classList.remove('dragover');
+          if (e.dataTransfer.files?.[0]) handleFile(e.dataTransfer.files[0]);
+        };
+      }
+      if (fileInput) {
+        fileInput.onchange = () => {
+          if (fileInput.files?.[0]) handleFile(fileInput.files[0]);
+        };
+      }
+
+      const handleFile = (file) => {
+        parseUnitsSpreadsheet(file, (res) => {
+          stagedUnits = res.units;
+          renderPreviewTable();
+          toast(`${res.total_count} unidades identificadas na planilha com sucesso!`);
+        });
+      };
+
+      // Gerador em Lote
+      if ($('#newDevType')) {
+        $('#newDevType').onchange = () => {
+          const type = $('#newDevType').value;
+          if (type === 'loteamento') {
+            $('#genBatchMode').value = 'lote';
+            $('#genBatchBlocks').value = 'Quadra A, Quadra B, Quadra C, Quadra D';
+            $('#genBatchCat').value = 'lote';
+            $('#genBatchArea').value = '250.00';
+            $('#genBatchPrice').value = '150000.00';
+          } else if (type === 'imovel') {
+            $('#genBatchMode').value = 'apto';
+            $('#genBatchBlocks').value = 'Torre 1, Torre 2';
+            $('#genBatchCat').value = 'apartamento';
+            $('#genBatchArea').value = '68.00';
+            $('#genBatchPrice').value = '380000.00';
+          } else if (type === 'casa') {
+            $('#genBatchMode').value = 'casa';
+            $('#genBatchBlocks').value = 'Condomínio';
+            $('#genBatchCat').value = 'casa';
+            $('#genBatchArea').value = '130.00';
+            $('#genBatchPrice').value = '520000.00';
+          }
+        };
+      }
+
+      if ($('#btnRunGenBatch')) {
+        $('#btnRunGenBatch').onclick = () => {
+          const mode = $('#genBatchMode').value;
+          const blocksStr = $('#genBatchBlocks').value;
+          const count = Number($('#genBatchCount').value) || 10;
+          const cat = $('#genBatchCat').value;
+          const area = Number($('#genBatchArea').value) || 0;
+          const price = Number($('#genBatchPrice').value) || 0;
+          const isMeter = $('#genBatchPriceType').value === 'meter';
+
+          const generated = generateBatchUnits({
+            mode,
+            blocksStr,
+            countPerBlock: count,
+            cat,
+            areaBuilt: area,
+            areaTotal: area,
+            price,
+            isPricePerMeter: isMeter,
+            allowFrac: mode === 'lote'
+          });
+
+          stagedUnits = generated;
+          // Switch to Excel preview tab to show summary
+          $$('[data-dev-tab]').forEach(b => b.classList.remove('active'));
+          $('[data-dev-tab="excel"]').classList.add('active');
+          $('#paneDevExcel').classList.add('active');
+          $('#paneDevBatch').classList.remove('active');
+          renderPreviewTable();
+          toast(`${generated.length} unidades geradas com sucesso!`);
+        };
+      }
+
+      // Grade Manual
+      let manualIndex = 1;
+      const addManualRow = () => {
+        const tbody = $('#devManualRows');
+        if (!tbody) return;
+        const rowId = `mrow_${Date.now()}_${manualIndex++}`;
+        const tr = document.createElement('tr');
+        tr.id = rowId;
+        tr.innerHTML = `
+          <td><input style="height:28px;font-size:12px;width:90px" placeholder="Ex.: 101" value="Unid. ${manualIndex}"></td>
+          <td><input style="height:28px;font-size:12px;width:90px" placeholder="Ex.: Quadra A" value="Geral"></td>
+          <td>
+            <select style="height:28px;font-size:12px">
+              <option value="apartamento">Apartamento</option>
+              <option value="lote">Lote / Terreno</option>
+              <option value="casa">Casa</option>
+              <option value="casa_condominio">Casa em Condomínio</option>
+              <option value="sala_comercial">Sala Comercial</option>
+            </select>
+          </td>
+          <td><input type="number" step="0.01" style="height:28px;font-size:12px;width:80px" value="70.00"></td>
+          <td><input type="number" step="0.01" style="height:28px;font-size:12px;width:100px" value="350000.00"></td>
+          <td><button type="button" class="btn small danger" style="padding:2px 6px">×</button></td>
+        `;
+        tbody.appendChild(tr);
+
+        tr.querySelector('button').onclick = () => { tr.remove(); syncManualToStaged(); };
+        tr.querySelectorAll('input, select').forEach(el => el.onchange = syncManualToStaged);
+        syncManualToStaged();
+      };
+
+      const syncManualToStaged = () => {
+        const rows = $$('#devManualRows tr');
+        const manualUnits = [];
+        rows.forEach(tr => {
+          const inputs = tr.querySelectorAll('input');
+          const sel = tr.querySelector('select');
+          if (inputs.length >= 4) {
+            const num = inputs[0].value.trim();
+            const blk = inputs[1].value.trim();
+            const cat = sel?.value || 'apartamento';
+            const area = Number(inputs[2].value) || 0;
+            const price = Number(inputs[3].value) || 0;
+            if (num) {
+              manualUnits.push({
+                unit_number: num,
+                block: blk || null,
+                category: cat,
+                area_built: area,
+                area_total: area,
+                base_price: price,
+                price_per_meter: area ? price / area : null,
+                pricing_model: 'direct',
+                status: 'disponivel'
+              });
+            }
+          }
+        });
+        stagedUnits = manualUnits;
+        updateSummary();
+      };
+
+      if ($('#btnAddManualUnitRow')) $('#btnAddManualUnitRow').onclick = addManualRow;
+    }
+
+    // -------------------------------------------------------------------------
+    // MODAL DE IMPORTAÇÃO DE PLANILHA EXCEL PARA EMPREENDIMENTO EXISTENTE
+    // -------------------------------------------------------------------------
+    function openExcelImportModal(presetDevId){
+      let importedUnits = [];
+
+      const devOptions = currentDeals.map(d => 
+        `<option value="${d.id}" ${d.id === presetDevId ? 'selected' : ''}>${esc(d.name)} (${labelProduct[d.product_type] || d.product_type})</option>`
+      ).join('');
+
+      const modalHtml = `
+        <div class="field">
+          <label>Empreendimento de destino *</label>
+          <select id="importDevSelect">${devOptions}</select>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin:12px 0 8px;flex-wrap:wrap;gap:8px">
+          <div>
+            <strong>Planilha de Unidades (.xlsx, .xls ou .csv)</strong>
+            <div style="font-size:12px;color:#64748b">Identificador, bloco/quadra, tipologia, metragem e valor</div>
+          </div>
+          <div style="display:flex;gap:6px">
+            <button type="button" class="btn small" id="btnImportTplXlsx">⬇ Baixar Modelo (.xlsx)</button>
+            <button type="button" class="btn small" id="btnImportTplCsv">⬇ Baixar Modelo (.csv)</button>
+          </div>
+        </div>
+
+        <div class="dropzone-box" id="importDropzone">
+          <div style="font-size:32px;margin-bottom:6px">📥</div>
+          <strong>Arraste o arquivo Excel/CSV aqui ou clique para selecionar</strong>
+          <input type="file" id="importFileInput" class="hidden" accept=".xlsx,.xls,.csv,.txt">
+          <br>
+          <button type="button" class="btn small primary" style="margin-top:10px" id="btnTriggerImportFile">＋ Selecionar arquivo do computador</button>
+        </div>
+
+        <div class="field" style="margin-top:12px">
+          <label class="check">
+            <input type="checkbox" id="importReplaceExisting">
+            <b>Substituir unidades existentes</b> deste empreendimento (se desmarcado, novas unidades serão adicionadas)
+          </label>
+        </div>
+
+        <div id="importSummaryCard" class="hidden" style="margin-top:12px"></div>
+        <div id="importPreviewWrap" class="hidden tablewrap" style="max-height:200px;overflow:auto;margin-top:8px;border:1px solid #cbd6e2;border-radius:6px">
+          <table class="table" style="font-size:12px">
+            <thead>
+              <tr style="background:#f1f5f9">
+                <th>Nº / Lote</th><th>Bloco</th><th>Tipologia</th><th>Área (m²)</th><th>Valor (R$)</th><th>R$/m²</th>
+              </tr>
+            </thead>
+            <tbody id="importPreviewBody"></tbody>
+          </table>
+        </div>
+      `;
+
+      openModal('Importar Unidades via Planilha Excel', 'Suba a planilha com as unidades, metragens, tipologias e valores para registrar no sistema.', modalHtml, async () => {
+        const devId = $('#importDevSelect')?.value;
+        if (!devId) throw new Error('Selecione o empreendimento de destino.');
+        if (!importedUnits.length) throw new Error('Nenhuma unidade carregada. Selecione uma planilha Excel ou CSV válida.');
+
+        const dev = currentDeals.find(d => d.id === devId);
+        const replaceExisting = $('#importReplaceExisting')?.checked;
+
+        if (replaceExisting) {
+          if (!confirm(`Tem certeza que deseja SUBSTITUIR todas as unidades existentes do empreendimento "${dev?.name}" pelas ${importedUnits.length} novas unidades da planilha?`)) {
+            return;
+          }
+          await rest(`units?development_id=eq.${devId}&${q()}`, { method: 'DELETE' });
+        }
+
+        const unitsToSave = importedUnits.map(u => ({
+          organization_id: org.id,
+          development_id: devId,
+          unit_number: u.unit_number,
+          block: u.block || null,
+          category: u.category || 'apartamento',
+          area_built: u.area_built || null,
+          area_total: u.area_total || null,
+          base_price: Number(u.base_price) || 0,
+          price_per_meter: Number(u.price_per_meter) || null,
+          pricing_model: 'direct',
+          allow_fractional: Boolean(u.allow_fractional),
+          min_fractional_area: u.min_fractional_area || null,
+          status: 'disponivel',
+          notes: u.notes || null,
+          created_by: user.id
+        }));
+
+        await rest('units', {
+          method: 'POST',
+          body: JSON.stringify(unitsToSave)
+        });
+
+        // Recalcular unidades do empreendimento
+        const allUnitsForDev = (currentUnits || []).filter(u => u.development_id === devId);
+        const newTotalCount = replaceExisting ? importedUnits.length : (allUnitsForDev.length + importedUnits.length);
+        const newVgv = importedUnits.reduce((s, u) => s + (Number(u.base_price) || 0), 0) + (replaceExisting ? 0 : (dev?.reference_value || 0));
+
+        await rest(`developments?id=eq.${devId}&${q()}`, {
+          method: 'PATCH',
+          body: JSON.stringify({ units_count: newTotalCount, reference_value: newVgv })
+        });
+
+        await refreshView();
+        toast(`${importedUnits.length} unidades importadas com sucesso para "${dev?.name}"!`);
+      }, { wide: true });
+
+      if ($('#btnImportTplXlsx')) $('#btnImportTplXlsx').onclick = () => downloadUnitsTemplate('xlsx');
+      if ($('#btnImportTplCsv')) $('#btnImportTplCsv').onclick = () => downloadUnitsTemplate('csv');
+
+      const fInput = $('#importFileInput');
+      const dzone = $('#importDropzone');
+      if ($('#btnTriggerImportFile')) $('#btnTriggerImportFile').onclick = (e) => { e.stopPropagation(); fInput.click(); };
+      if (dzone) {
+        dzone.onclick = () => fInput.click();
+        dzone.ondragover = (e) => { e.preventDefault(); dzone.classList.add('dragover'); };
+        dzone.ondragleave = () => dzone.classList.remove('dragover');
+        dzone.ondrop = (e) => {
+          e.preventDefault();
+          dzone.classList.remove('dragover');
+          if (e.dataTransfer.files?.[0]) handleImportFile(e.dataTransfer.files[0]);
+        };
+      }
+      if (fInput) {
+        fInput.onchange = () => {
+          if (fInput.files?.[0]) handleImportFile(fInput.files[0]);
+        };
+      }
+
+      const handleImportFile = (file) => {
+        parseUnitsSpreadsheet(file, (res) => {
+          importedUnits = res.units;
+          const sumCard = $('#importSummaryCard');
+          const pWrap = $('#importPreviewWrap');
+          const pBody = $('#importPreviewBody');
+
+          if (sumCard) {
+            sumCard.classList.remove('hidden');
+            sumCard.innerHTML = `
+              <div style="background:#e0f2fe;border:1px solid #7dd3fc;border-radius:8px;padding:10px 14px;color:#0369a1">
+                <strong>✓ ${res.total_count} unidades identificadas</strong> | Metragem total: <b>${new Intl.NumberFormat('pt-BR').format(res.total_area)} m²</b> | VGV Total: <b>${currency(res.total_vgv)}</b>
+              </div>
+            `;
+          }
+
+          if (pWrap && pBody) {
+            pWrap.classList.remove('hidden');
+            pBody.innerHTML = res.units.slice(0, 50).map(u => `
+              <tr>
+                <td><strong>${esc(u.unit_number)}</strong></td>
+                <td>${esc(u.block || '—')}</td>
+                <td><span class="tag blue" style="font-size:10px">${labelUnitCategory[u.category] || esc(u.category)}</span></td>
+                <td>${u.area_built || u.area_total ? Number(u.area_built || u.area_total).toFixed(2)+' m²' : '—'}</td>
+                <td><b>${currency(u.base_price)}</b></td>
+                <td>${u.price_per_meter ? currency(u.price_per_meter)+'/m²' : '—'}</td>
+              </tr>
+            `).join('') + (res.units.length > 50 ? `<tr><td colspan="6" style="text-align:center;color:#64748b;font-style:italic">... e mais ${res.units.length - 50} unidades na planilha.</td></tr>` : '');
+          }
+          toast(`${res.total_count} unidades identificadas na planilha!`);
+        });
+      };
     }
 
     function openEditDevelopmentModal(id){
@@ -2841,7 +3755,8 @@
     async function importRates(file){let matrix;if(file.name.toLowerCase().endsWith('.csv'))matrix=csvRows(await file.text());else{const XLSX=await import('https://cdn.sheetjs.com/xlsx-0.20.3/package/xlsx.mjs');const w=XLSX.read(await file.arrayBuffer(),{type:'array'});matrix=XLSX.utils.sheet_to_json(w.Sheets[w.SheetNames[0]],{header:1,defval:'',raw:false})}if(matrix.length<2)throw Error('A planilha não tem linhas de dados.');const head=matrix[0].map(norm),idxs={name:['nome','name','tabela'].map(x=>head.indexOf(x)).find(x=>x>=0),product:['produto','tipo','product_type'].map(x=>head.indexOf(norm(x))).find(x=>x>=0),method:['metodo','método','method_code'].map(x=>head.indexOf(norm(x))).find(x=>x>=0),rate:['juros_aa','taxa_aa','annual_rate_pct','juros_anuais'].map(x=>head.indexOf(norm(x))).find(x=>x>=0),basis:['base_taxa','rate_basis','taxa_base'].map(x=>head.indexOf(norm(x))).find(x=>x>=0),index:['indice','índice','index_name'].map(x=>head.indexOf(norm(x))).find(x=>x>=0),indexRate:['indice_aa','index_rate_pct','taxa_indice_aa'].map(x=>head.indexOf(norm(x))).find(x=>x>=0),valid:['vigencia','vigente_a_partir_de','valid_from'].map(x=>head.indexOf(norm(x))).find(x=>x>=0)};if(idxs.rate==null||idxs.rate<0)throw Error('Coluna de taxa anual não encontrada. Baixe o modelo CalcuLar.');const productCode=v=>{const n=norm(v);return ({casa:'casa',imovel:'imovel',imovel_residencial:'imovel',residencial:'imovel',terreno:'terreno',lote:'loteamento',loteamento:'loteamento',comercial:'comercial',imovel_comercial:'comercial'})[n]||n};const methodCode=v=>{const n=norm(v);return ({sac:'SAC',price:'PRICE',saco2:'SACOQ2',sacoq2:'SACOQ2',saco_q_2:'SACOQ2',sacoq_2_anual:'SACOQ2',sacoq12:'SACOQ12',sacoq_12:'SACOQ12',sacoq_anual_12_meses:'SACOQ12',sac_indexado:'SAC_INDEXED',price_indexado:'PRICE_INDEXED',personalizado:'CUSTOM'})[n]||String(v||'SAC').toUpperCase()};const rows=matrix.slice(1).filter(r=>r.some(Boolean)).map((r,i)=>{const name=String(r[idxs.name]||`Importada ${file.name}`).trim();return {name,product_type:productCode(r[idxs.product]||'imovel'),method_code:methodCode(r[idxs.method]),annual_rate_pct:Number(String(r[idxs.rate]).replace(',','.'))||0,rate_basis:String(r[idxs.basis]||'effective').toLowerCase().startsWith('nom')?'nominal':'effective',index_name:String(r[idxs.index]||'none').toUpperCase(),index_rate_pct:Number(String(r[idxs.indexRate]||0).replace(',','.'))||0,valid_from:String(r[idxs.valid]||new Date().toISOString().slice(0,10)),version:currentRates.filter(x=>x.name===name).length+1,correction_months:12,organization_id:org.id,created_by:user.id,_line:i+2}});const bad=rows.filter(x=>x.annual_rate_pct<=0||!['casa','imovel','terreno','loteamento','comercial'].includes(x.product_type)||!['SAC','PRICE','SACOQ2','SACOQ12','SAC_INDEXED','PRICE_INDEXED','CUSTOM'].includes(x.method_code));const preview=rows.slice(0,6).map(x=>`<tr><td>${x._line}</td><td>${esc(x.product_type)}</td><td>${labelMethod[x.method_code]||esc(x.method_code)}</td><td>${x.annual_rate_pct.toFixed(2)}%</td><td>${esc(x.name)}</td></tr>`).join('');openModal(`Prévia da importação · ${rows.length} linhas`,bad.length?`${bad.length} linha(s) com erro serão ignoradas.`:'Confira as linhas antes de importar.',`<div class="tablewrap"><table class="table"><thead><tr><th>Linha</th><th>Produto</th><th>Método</th><th>Juros</th><th>Tabela</th></tr></thead><tbody>${preview}</tbody></table></div>${bad.length?`<div class="error">Linhas inválidas: ${bad.map(x=>x._line).join(', ')}</div>`:''}`,async()=>{const good=rows.filter(x=>!bad.includes(x)).map(({_line,...x})=>x);if(!good.length)throw Error('Não há linhas válidas para importar.');await rest('rate_profiles?select=*',{method:'POST',headers:{Prefer:'return=minimal'},body:JSON.stringify(good)});await refreshView();toast(`${good.length} perfil(is) importado(s).`)})}
     $('#rateFile').onchange=async e=>{try{if(e.target.files[0])await importRates(e.target.files[0])}catch(e){toast('Falha ao ler planilha: '+e.message)}finally{e.target.value=''}};
     $('#downloadTemplate').onclick=()=>{const csv='nome,produto,metodo,juros_aa,base_taxa,indice,indice_aa,vigencia\n,,,,efetiva,none,0,';const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}));a.download='modelo-taxas-calcular.csv';a.click();URL.revokeObjectURL(a.href)};
-    $('#addDevelopment').onclick=()=>openModal('Novo empreendimento','Cadastre um imóvel ou loteamento da empresa.',`<div class="field"><label>Nome</label><input id="dName" required></div><div class="field"><label>Tipo</label><select id="dType"><option value="casa">Casa</option><option value="imovel">Imóvel</option><option value="terreno">Terreno</option><option value="loteamento">Loteamento</option><option value="comercial">Imóvel comercial</option></select></div><div class="grid"><div class="field col6"><label>Cidade</label><input id="dCity"></div><div class="field col6"><label>UF</label><input id="dState" maxlength="2"></div><div class="field col6"><label>Unidades / lotes</label><input id="dUnits" type="number"></div><div class="field col6"><label>Valor de referência</label><input id="dValue" type="number" step="0.01"></div><div class="field col12"><label>Área do lote (m²)</label><input id="dArea" type="number"></div></div>`,async()=>{const name=$('#dName').value.trim();if(!name)throw Error('Informe o nome.');await rest('developments?select=*',{method:'POST',headers:{Prefer:'return=minimal'},body:JSON.stringify({organization_id:org.id,name,product_type:$('#dType').value,city:$('#dCity').value.trim(),state:$('#dState').value.trim().toUpperCase(),units_count:Number($('#dUnits').value)||null,reference_value:Number($('#dValue').value)||0,lot_area:Number($('#dArea').value)||null,created_by:user.id})});await refreshView();toast('Empreendimento cadastrado.')});
+    $('#addDevelopment').onclick=()=>openNewDevelopmentModal();
+    if($('#btnImportUnitsExcel')) $('#btnImportUnitsExcel').onclick=()=>openExcelImportModal();
     $('#addBranch').onclick=()=>openModal('Nova filial','Crie uma unidade para separar os relatórios da empresa.',`<div class="field"><label>Nome da filial</label><input id="branchName" maxlength=120 required></div><div class="grid"><div class="field col6"><label>Cidade</label><input id="branchCity"></div><div class="field col6"><label>UF</label><input id="branchState" maxlength=2></div></div>`,async()=>{const name=$('#branchName').value.trim();if(name.length<2)throw Error('Informe o nome da filial.');await rest('organization_branches?select=*',{method:'POST',headers:{Prefer:'return=minimal'},body:JSON.stringify({organization_id:org.id,name,city:$('#branchCity').value.trim()||null,state:$('#branchState').value.trim().toUpperCase()||null,created_by:user.id})});await refreshView();toast('Filial cadastrada.')});
     $('#manageLeadForm').onclick=async()=>{try{let form=currentLeadForm;if(!form){const rows=await rest('lead_capture_forms?select=*&'+q()+'&limit=1');form=rows[0];if(!form){const created=await rest('lead_capture_forms?select=*',{method:'POST',headers:{Prefer:'return=representation'},body:JSON.stringify({organization_id:org.id,branch_id:$('#simBranch').value||null,created_by:user.id})});form=created[0]}currentLeadForm=form}if(!form?.public_token)throw Error('Não foi possível criar o formulário.');const target=new URL('captacao.html',location.href);target.searchParams.set('token',form.public_token);openModal('Formulário público','Compartilhe este link. Os contatos chegarão à lista de leads.',`<div class="field"><label>Link de captação</label><input id="publicLeadLink" value="${esc(target.href)}" readonly></div>`,async()=>{await navigator.clipboard?.writeText(target.href);toast('Link copiado.')});$('#modalConfirm').textContent='Copiar link'}catch(e){toast(e.message)}};
     $('#addCustomer').onclick=()=>openModal('Novo cliente','Registre apenas dados necessários ao atendimento.',`<div class="field"><label>Nome / referência</label><input id="cName" required></div><div class="field"><label>E-mail</label><input id="cEmail" type="email"></div><div class="field"><label>Telefone</label><input id="cPhone" type="tel"></div><div class="field"><label>Origem</label><select id="cSource"><option>Manual</option><option>Indicação</option><option>Site</option><option>Instagram</option><option>Facebook</option><option>Outro</option></select></div>`,async()=>{const name=$('#cName').value.trim();if(!name)throw Error('Informe o nome.');await rest('customers?select=*',{method:'POST',headers:{Prefer:'return=minimal'},body:JSON.stringify({organization_id:org.id,name,email:$('#cEmail').value.trim()||null,phone:$('#cPhone').value.trim()||null,source:$('#cSource').value,created_by:user.id,owner_label:user.email})});await refreshView();toast('Cliente cadastrado.')});
